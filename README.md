@@ -1,6 +1,6 @@
 # Group Discount App
 
-Group Duscount is a basic discount app to find groupd discount rates on ticket using the GoldStar API.
+GroupDiscount app is an iOS app to find people willing to avail group discount rates on various events.
 
 Time spent: **** hours spent in total
 
