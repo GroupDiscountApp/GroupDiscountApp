@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var userEmailAddressField: UITextField!
     @IBOutlet weak var userPasswordField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     
     
@@ -25,6 +25,33 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onLoginButton(_ sender: UIButton) {
+        
+        let username = userEmailAddressField.text ?? ""
+        let password = userPasswordField.text ?? ""
+        let alert = UIAlertController(title: "Error", message: "Please enter a valid username and password" , preferredStyle: .alert)
+        
+        PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
+            
+            if user != nil {
+                print("You're logged in!")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            } else {
+                print("User login failed.")
+                print(error!.localizedDescription)
+                let defaultAction = UIAlertAction(title: "Try again", style: .default, handler: nil)
+                alert.addAction(defaultAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @IBAction func onSignupButton(_ sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "signupSegue", sender: nil)
+
     }
     
 

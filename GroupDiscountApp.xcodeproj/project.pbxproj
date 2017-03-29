@@ -11,6 +11,9 @@
 		1E8C9C3C1E679C6A0022577F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8C9C3A1E679C6A0022577F /* Main.storyboard */; };
 		1E8C9C3E1E679C6A0022577F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8C9C3D1E679C6A0022577F /* Assets.xcassets */; };
 		1E8C9C411E679C6A0022577F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8C9C3F1E679C6A0022577F /* LaunchScreen.storyboard */; };
+		1EAACFA31E8A0BAF008E3C96 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAACFA21E8A0BAF008E3C96 /* SignupViewController.swift */; };
+		1EAACFA51E8A14B0008E3C96 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAACFA41E8A14B0008E3C96 /* ProfileViewController.swift */; };
+		8D5DBCC301EF22987CAC3B86 /* Pods_GroupDiscountApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34DA5BB287E6C5812F894F26 /* Pods_GroupDiscountApp.framework */; };
 		93ED11DC1E8094B000C5C81B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED11DB1E8094B000C5C81B /* LoginViewController.swift */; };
 		93ED11DE1E8097AD00C5C81B /* AllEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED11DD1E8097AD00C5C81B /* AllEventsViewController.swift */; };
 		93ED11E31E80984700C5C81B /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED11E21E80984700C5C81B /* EventsCell.swift */; };
@@ -20,12 +23,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13BFEC6B1D0F69753FE062D2 /* Pods-GroupDiscountApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupDiscountApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupDiscountApp/Pods-GroupDiscountApp.release.xcconfig"; sourceTree = "<group>"; };
 		1E8C9C331E679C680022577F /* GroupDiscountApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupDiscountApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8C9C361E679C690022577F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8C9C3B1E679C6A0022577F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E8C9C3D1E679C6A0022577F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E8C9C401E679C6A0022577F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E8C9C421E679C6A0022577F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EAACFA21E8A0BAF008E3C96 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		1EAACFA41E8A14B0008E3C96 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		34DA5BB287E6C5812F894F26 /* Pods_GroupDiscountApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroupDiscountApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A5B3AA0D58B6FF0391F2FD0 /* Pods-GroupDiscountApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupDiscountApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroupDiscountApp/Pods-GroupDiscountApp.debug.xcconfig"; sourceTree = "<group>"; };
 		93ED11DB1E8094B000C5C81B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		93ED11DD1E8097AD00C5C81B /* AllEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllEventsViewController.swift; sourceTree = "<group>"; };
 		93ED11E21E80984700C5C81B /* EventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
@@ -39,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D5DBCC301EF22987CAC3B86 /* Pods_GroupDiscountApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +59,8 @@
 			children = (
 				1E8C9C351E679C680022577F /* GroupDiscountApp */,
 				1E8C9C341E679C680022577F /* Products */,
+				569812C268DA62A85298974E /* Pods */,
+				B24860054F0C4C138267363B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +86,15 @@
 			path = GroupDiscountApp;
 			sourceTree = "<group>";
 		};
+		569812C268DA62A85298974E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A5B3AA0D58B6FF0391F2FD0 /* Pods-GroupDiscountApp.debug.xcconfig */,
+				13BFEC6B1D0F69753FE062D2 /* Pods-GroupDiscountApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		93ED11DA1E80949400C5C81B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +102,8 @@
 				93ED11DD1E8097AD00C5C81B /* AllEventsViewController.swift */,
 				93ED11E41E809C1700C5C81B /* EventViewController.swift */,
 				93ED11E61E809E3F00C5C81B /* GroupViewController.swift */,
+				1EAACFA21E8A0BAF008E3C96 /* SignupViewController.swift */,
+				1EAACFA41E8A14B0008E3C96 /* ProfileViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -95,6 +117,14 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		B24860054F0C4C138267363B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34DA5BB287E6C5812F894F26 /* Pods_GroupDiscountApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,9 +132,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E8C9C451E679C6A0022577F /* Build configuration list for PBXNativeTarget "GroupDiscountApp" */;
 			buildPhases = (
+				49C8265C853731BCFA0CA2B2 /* [CP] Check Pods Manifest.lock */,
 				1E8C9C2F1E679C680022577F /* Sources */,
 				1E8C9C301E679C680022577F /* Frameworks */,
 				1E8C9C311E679C680022577F /* Resources */,
+				7970CEFD37C4BF276847906F /* [CP] Embed Pods Frameworks */,
+				CA564D1134EDE77FD2589BB7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -162,6 +195,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		49C8265C853731BCFA0CA2B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7970CEFD37C4BF276847906F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GroupDiscountApp/Pods-GroupDiscountApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA564D1134EDE77FD2589BB7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GroupDiscountApp/Pods-GroupDiscountApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1E8C9C2F1E679C680022577F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -169,9 +250,11 @@
 			files = (
 				93ED11E91E809EA100C5C81B /* DateTableViewCell.swift in Sources */,
 				93ED11E71E809E3F00C5C81B /* GroupViewController.swift in Sources */,
+				1EAACFA31E8A0BAF008E3C96 /* SignupViewController.swift in Sources */,
 				93ED11E31E80984700C5C81B /* EventsCell.swift in Sources */,
 				93ED11DE1E8097AD00C5C81B /* AllEventsViewController.swift in Sources */,
 				93ED11DC1E8094B000C5C81B /* LoginViewController.swift in Sources */,
+				1EAACFA51E8A14B0008E3C96 /* ProfileViewController.swift in Sources */,
 				1E8C9C371E679C690022577F /* AppDelegate.swift in Sources */,
 				93ED11E51E809C1700C5C81B /* EventViewController.swift in Sources */,
 			);
@@ -294,6 +377,7 @@
 		};
 		1E8C9C461E679C6A0022577F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A5B3AA0D58B6FF0391F2FD0 /* Pods-GroupDiscountApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GroupDiscountApp/Info.plist;
@@ -306,6 +390,7 @@
 		};
 		1E8C9C471E679C6A0022577F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13BFEC6B1D0F69753FE062D2 /* Pods-GroupDiscountApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GroupDiscountApp/Info.plist;
