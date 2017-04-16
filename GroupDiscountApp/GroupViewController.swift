@@ -10,6 +10,9 @@ import UIKit
 
 class GroupViewController: UIViewController {
 
+    var groupId: String!
+    var event: Event!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,14 +25,19 @@ class GroupViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "groupChatSegue" {
+            let chatVC = segue.destination as! ChatViewController
+            chatVC.hidesBottomBarWhenPushed = true
+            chatVC.groupId = groupId
+        }
     }
-    */
+ 
 
 }

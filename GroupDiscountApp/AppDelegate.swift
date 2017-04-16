@@ -20,9 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.initialize(
             with: ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
-                configuration.applicationId = "GroupDiscountDemo"
-                configuration.clientKey = "7e784uiifk602387fdship345"  // set to nil assuming you have not set clientKey
-                configuration.server = "https://warm-hamlet-87884.herokuapp.com/parse"
+                //configuration.applicationId = "GroupDiscountDemo"
+                //configuration.clientKey = "7e784uiifk602387fdship345"  // set to nil assuming you have not set clientKey
+                //configuration.server = "https://warm-hamlet-87884.herokuapp.com/parse"
+
             })
         )
         

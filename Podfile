@@ -7,8 +7,13 @@ target 'GroupDiscountApp' do
 
   # Pods for GroupDiscountApp
 
+  pod 'AFNetworking', ' ~> 2.6.3'
+  pod 'Alamofire'
+  pod 'BDBOAuth1Manager', '~> 1.6.0'
   pod 'Parse'
   pod 'ParseUI'
+  pod 'JSQMessagesViewController'
+  pod 'ProgressHUD'
     
 
 end

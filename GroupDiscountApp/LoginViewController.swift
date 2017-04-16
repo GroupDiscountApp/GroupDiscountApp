@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             } else {
                 print("User login failed.")
-                print(error!.localizedDescription)
+                print(error! as NSError)
                 let defaultAction = UIAlertAction(title: "Try again", style: .default, handler: nil)
                 alert.addAction(defaultAction)
                 self.present(alert, animated: true, completion: nil)

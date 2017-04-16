@@ -1,0 +1,28 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1720E181F3F4C4F141E9826A260FC5B9F235ABDB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1720E181F3F4C4F141E9826A260FC5B9F235ABDB" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "42E40054-94D7-4F00-991A-42E533C28FE9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1720E181F3F4C4F141E9826A260FC5B9F235ABDB" : "GroupDiscountApp_test\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "GroupDiscountApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "GroupDiscountApp.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/GroupDiscountApp\/GroupDiscountApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1720E181F3F4C4F141E9826A260FC5B9F235ABDB"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/bitbucket.org\/calvinccny\/codepath.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1720E181F3F4C4F141E9826A260FC5B9F235ABDB"
+    }
+  ]
+}

@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ProgressHUD
 
 class SignupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -44,7 +45,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
     @IBAction func onCreateAccountButton(_ sender: UIButton) {
-        
+        /*
         let newUser = PFUser()
         let alert = UIAlertController(title: "Error", message: "This Username already exists" , preferredStyle: .alert)
         
@@ -64,6 +65,45 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
                 
             }
         }
+        */
+        let name = firstNameField.text! + " " + lastNameField.text!
+        let email = emailAddressField.text
+        let password = passwordField.text
+        
+        if name.characters.count == 0 {
+            ProgressHUD.showError("Name must be set.")
+            return
+        }
+        if password?.characters.count == 0 {
+            ProgressHUD.showError("Password must be set.")
+            return
+        }
+        if email?.characters.count == 0 {
+            ProgressHUD.showError("Email must be set.")
+            return
+        }
+        
+        ProgressHUD.show("Please wait...", interaction: false)
+        
+        var user = PFUser()
+        user.username = email
+        user.password = password
+        user.email = email
+        user[PF_USER_EMAILCOPY] = email
+        user[PF_USER_FULLNAME] = name
+        user[PF_USER_FULLNAME_LOWER] = name.lowercased()
+        user.signUpInBackground { (succeeded: Bool, error: Error?) -> Void in
+            if error == nil {
+                PushNotication.parsePushUserAssign()
+                ProgressHUD.showSuccess("Succeeded.")
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                if let userInfo = (error as NSError?)?.userInfo {
+                    ProgressHUD.showError(userInfo["error"] as! String)
+                }
+            }
+        }
+
     }
     
     @IBAction func onCancelButton(_ sender: UIBarButtonItem) {

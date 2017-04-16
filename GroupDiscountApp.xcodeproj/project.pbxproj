@@ -13,6 +13,19 @@
 		1E8C9C411E679C6A0022577F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8C9C3F1E679C6A0022577F /* LaunchScreen.storyboard */; };
 		1EAACFA31E8A0BAF008E3C96 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAACFA21E8A0BAF008E3C96 /* SignupViewController.swift */; };
 		1EAACFA51E8A14B0008E3C96 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAACFA41E8A14B0008E3C96 /* ProfileViewController.swift */; };
+		3E0D45EA1E96DF08001153C5 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0D45E91E96DF08001153C5 /* Event.swift */; };
+		3E3FA1301E94258D000BC0F6 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FA12F1E94258D000BC0F6 /* YelpClient.swift */; };
+		3E3FA1331E94262E000BC0F6 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FA1311E94262E000BC0F6 /* Business.swift */; };
+		3E3FA1361E942E3E000BC0F6 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FA1351E942E3E000BC0F6 /* InfiniteScrollActivityView.swift */; };
+		3EDB5A3F1E928D71002D903B /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB5A371E928D71002D903B /* Camera.swift */; };
+		3EDB5A401E928D71002D903B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB5A381E928D71002D903B /* ChatViewController.swift */; };
+		3EDB5A411E928D71002D903B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB5A391E928D71002D903B /* Constants.swift */; };
+		3EDB5A421E928D71002D903B /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB5A3A1E928D71002D903B /* GroupsViewController.swift */; };
+		3EDB5A431E928D71002D903B /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB5A3B1E928D71002D903B /* Images.swift */; };
+		3EDB5A441E928D71002D903B /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB5A3C1E928D71002D903B /* Messages.swift */; };
+		3EDB5A451E928D71002D903B /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB5A3D1E928D71002D903B /* PushNotification.swift */; };
+		3EDB5A461E928D71002D903B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB5A3E1E928D71002D903B /* Utilities.swift */; };
+		3EE8991C1E96891000A5E4D2 /* StubhubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8991B1E96891000A5E4D2 /* StubhubClient.swift */; };
 		8D5DBCC301EF22987CAC3B86 /* Pods_GroupDiscountApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34DA5BB287E6C5812F894F26 /* Pods_GroupDiscountApp.framework */; };
 		93ED11DC1E8094B000C5C81B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED11DB1E8094B000C5C81B /* LoginViewController.swift */; };
 		93ED11DE1E8097AD00C5C81B /* AllEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED11DD1E8097AD00C5C81B /* AllEventsViewController.swift */; };
@@ -34,6 +47,19 @@
 		1EAACFA41E8A14B0008E3C96 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		34DA5BB287E6C5812F894F26 /* Pods_GroupDiscountApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroupDiscountApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A5B3AA0D58B6FF0391F2FD0 /* Pods-GroupDiscountApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupDiscountApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroupDiscountApp/Pods-GroupDiscountApp.debug.xcconfig"; sourceTree = "<group>"; };
+		3E0D45E91E96DF08001153C5 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		3E3FA12F1E94258D000BC0F6 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
+		3E3FA1311E94262E000BC0F6 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		3E3FA1351E942E3E000BC0F6 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
+		3EDB5A371E928D71002D903B /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		3EDB5A381E928D71002D903B /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		3EDB5A391E928D71002D903B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3EDB5A3A1E928D71002D903B /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		3EDB5A3B1E928D71002D903B /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		3EDB5A3C1E928D71002D903B /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		3EDB5A3D1E928D71002D903B /* PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
+		3EDB5A3E1E928D71002D903B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		3EE8991B1E96891000A5E4D2 /* StubhubClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubhubClient.swift; sourceTree = "<group>"; };
 		93ED11DB1E8094B000C5C81B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		93ED11DD1E8097AD00C5C81B /* AllEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllEventsViewController.swift; sourceTree = "<group>"; };
 		93ED11E21E80984700C5C81B /* EventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
@@ -75,8 +101,11 @@
 		1E8C9C351E679C680022577F /* GroupDiscountApp */ = {
 			isa = PBXGroup;
 			children = (
+				3EDB5A391E928D71002D903B /* Constants.swift */,
+				3EAAC87F1E964DD000F59FE1 /* Models */,
 				93ED11DF1E8097EC00C5C81B /* Views */,
 				93ED11DA1E80949400C5C81B /* View Controllers */,
+				3EAAC87E1E964C6A00F59FE1 /* Utilities */,
 				1E8C9C361E679C690022577F /* AppDelegate.swift */,
 				1E8C9C3A1E679C6A0022577F /* Main.storyboard */,
 				1E8C9C3D1E679C6A0022577F /* Assets.xcassets */,
@@ -84,6 +113,29 @@
 				1E8C9C421E679C6A0022577F /* Info.plist */,
 			);
 			path = GroupDiscountApp;
+			sourceTree = "<group>";
+		};
+		3EAAC87E1E964C6A00F59FE1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3EDB5A371E928D71002D903B /* Camera.swift */,
+				3EDB5A3B1E928D71002D903B /* Images.swift */,
+				3EDB5A3C1E928D71002D903B /* Messages.swift */,
+				3EDB5A3D1E928D71002D903B /* PushNotification.swift */,
+				3EDB5A3E1E928D71002D903B /* Utilities.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		3EAAC87F1E964DD000F59FE1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3E3FA1311E94262E000BC0F6 /* Business.swift */,
+				3E3FA12F1E94258D000BC0F6 /* YelpClient.swift */,
+				3EE8991B1E96891000A5E4D2 /* StubhubClient.swift */,
+				3E0D45E91E96DF08001153C5 /* Event.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		569812C268DA62A85298974E /* Pods */ = {
@@ -98,10 +150,12 @@
 		93ED11DA1E80949400C5C81B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				93ED11DB1E8094B000C5C81B /* LoginViewController.swift */,
 				93ED11DD1E8097AD00C5C81B /* AllEventsViewController.swift */,
 				93ED11E41E809C1700C5C81B /* EventViewController.swift */,
+				3EDB5A3A1E928D71002D903B /* GroupsViewController.swift */,
 				93ED11E61E809E3F00C5C81B /* GroupViewController.swift */,
+				3EDB5A381E928D71002D903B /* ChatViewController.swift */,
+				93ED11DB1E8094B000C5C81B /* LoginViewController.swift */,
 				1EAACFA21E8A0BAF008E3C96 /* SignupViewController.swift */,
 				1EAACFA41E8A14B0008E3C96 /* ProfileViewController.swift */,
 			);
@@ -111,6 +165,7 @@
 		93ED11DF1E8097EC00C5C81B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3E3FA1351E942E3E000BC0F6 /* InfiniteScrollActivityView.swift */,
 				93ED11E21E80984700C5C81B /* EventsCell.swift */,
 				93ED11E81E809EA100C5C81B /* DateTableViewCell.swift */,
 			);
@@ -250,13 +305,26 @@
 			files = (
 				93ED11E91E809EA100C5C81B /* DateTableViewCell.swift in Sources */,
 				93ED11E71E809E3F00C5C81B /* GroupViewController.swift in Sources */,
+				3EE8991C1E96891000A5E4D2 /* StubhubClient.swift in Sources */,
+				3EDB5A401E928D71002D903B /* ChatViewController.swift in Sources */,
 				1EAACFA31E8A0BAF008E3C96 /* SignupViewController.swift in Sources */,
 				93ED11E31E80984700C5C81B /* EventsCell.swift in Sources */,
+				3E3FA1331E94262E000BC0F6 /* Business.swift in Sources */,
+				3EDB5A421E928D71002D903B /* GroupsViewController.swift in Sources */,
 				93ED11DE1E8097AD00C5C81B /* AllEventsViewController.swift in Sources */,
+				3EDB5A441E928D71002D903B /* Messages.swift in Sources */,
+				3EDB5A451E928D71002D903B /* PushNotification.swift in Sources */,
+				3EDB5A431E928D71002D903B /* Images.swift in Sources */,
+				3E0D45EA1E96DF08001153C5 /* Event.swift in Sources */,
+				3EDB5A461E928D71002D903B /* Utilities.swift in Sources */,
 				93ED11DC1E8094B000C5C81B /* LoginViewController.swift in Sources */,
+				3EDB5A3F1E928D71002D903B /* Camera.swift in Sources */,
+				3E3FA1361E942E3E000BC0F6 /* InfiniteScrollActivityView.swift in Sources */,
 				1EAACFA51E8A14B0008E3C96 /* ProfileViewController.swift in Sources */,
 				1E8C9C371E679C690022577F /* AppDelegate.swift in Sources */,
 				93ED11E51E809C1700C5C81B /* EventViewController.swift in Sources */,
+				3E3FA1301E94258D000BC0F6 /* YelpClient.swift in Sources */,
+				3EDB5A411E928D71002D903B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
