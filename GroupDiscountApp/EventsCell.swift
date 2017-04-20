@@ -17,6 +17,7 @@ class EventsCell: UICollectionViewCell {
     @IBOutlet weak var reviewsCountLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     
+    /*
     var business: Business! {
         didSet {
             nameLabel.text = business.name
@@ -28,6 +29,7 @@ class EventsCell: UICollectionViewCell {
             distanceLabel.text = business.distance
         }
     }
+    */
     
     var event: Event! {
         didSet {

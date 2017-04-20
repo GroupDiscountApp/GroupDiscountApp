@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class AllEventsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UIScrollViewDelegate {
 
@@ -55,7 +56,7 @@ class AllEventsViewController: UIViewController, UICollectionViewDataSource, UIC
         )
         */
         
-        Event.searchWithTerm(term: "") { (events: [Event]?, error: Error?) in
+        Event.searchWith(q: "") { (events: [Event]?, error: Error?) in
             self.events = events
             self.filtered = events
             self.collectionView.reloadData()
@@ -124,7 +125,7 @@ class AllEventsViewController: UIViewController, UICollectionViewDataSource, UIC
                 }
                 )
                 */
-                Event.searchWithTerm(term: "", sort: nil, categories: nil, deals: nil, start: start) { (events: [Event]?, error: Error?) in
+                Event.searchWith(q: "", sort: nil, categories: nil, deals: nil, start: start) { (events: [Event]?, error: Error?) in
                     self.isMoreDataLoading = false
                     self.loadingMoreView!.stopAnimating()
                     self.events! += events!
@@ -148,4 +149,26 @@ class AllEventsViewController: UIViewController, UICollectionViewDataSource, UIC
         vc.event = event
     }
     
+}
+
+extension AllEventsViewController : PinterestLayoutDelegate {
+    // 1. Returns the photo height
+    func collectionView(_ collectionView:UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath , withWidth width:CGFloat) -> CGFloat {
+        let event = events[indexPath.item]
+        let boundingRect =  CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
+        let rect  = AVMakeRect(aspectRatio: (event.image?.size)!, insideRect: boundingRect)
+        return rect.size.height
+    }
+    
+    // 2. Returns the annotation size based on the text
+    func collectionView(_ collectionView: UICollectionView, heightForAnnotationAtIndexPath indexPath: IndexPath, withWidth width: CGFloat) -> CGFloat {
+        let annotationPadding = CGFloat(4)
+        let annotationHeaderHeight = CGFloat(17)
+        
+        let event = events[indexPath.item]
+        let font = UIFont(name: "AvenirNext-Regular", size: 10)!
+        let commentHeight = event.heightForComment(font, width: width)
+        let height = annotationPadding + annotationHeaderHeight + commentHeight + annotationPadding
+        return height
+    }
 }

@@ -17,6 +17,10 @@
 		3E3FA1301E94258D000BC0F6 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FA12F1E94258D000BC0F6 /* YelpClient.swift */; };
 		3E3FA1331E94262E000BC0F6 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FA1311E94262E000BC0F6 /* Business.swift */; };
 		3E3FA1361E942E3E000BC0F6 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FA1351E942E3E000BC0F6 /* InfiniteScrollActivityView.swift */; };
+		3EA718B61EA8F1FD00275218 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA718B51EA8F1FD00275218 /* PinterestLayout.swift */; };
+		3EA718B81EA8F2B300275218 /* RoundedCornersView.swift in Resources */ = {isa = PBXBuildFile; fileRef = 3EA718B71EA8F2B300275218 /* RoundedCornersView.swift */; };
+		3EA718BB1EA8F62E00275218 /* UIImage+Decompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA718BA1EA8F62E00275218 /* UIImage+Decompression.swift */; };
+		3EA718BD1EA8F89100275218 /* AnnotatedPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA718BC1EA8F89100275218 /* AnnotatedPhotoCell.swift */; };
 		3EDB5A3F1E928D71002D903B /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB5A371E928D71002D903B /* Camera.swift */; };
 		3EDB5A401E928D71002D903B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB5A381E928D71002D903B /* ChatViewController.swift */; };
 		3EDB5A411E928D71002D903B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB5A391E928D71002D903B /* Constants.swift */; };
@@ -51,6 +55,10 @@
 		3E3FA12F1E94258D000BC0F6 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		3E3FA1311E94262E000BC0F6 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		3E3FA1351E942E3E000BC0F6 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
+		3EA718B51EA8F1FD00275218 /* PinterestLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
+		3EA718B71EA8F2B300275218 /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
+		3EA718BA1EA8F62E00275218 /* UIImage+Decompression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Decompression.swift"; sourceTree = "<group>"; };
+		3EA718BC1EA8F89100275218 /* AnnotatedPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotatedPhotoCell.swift; sourceTree = "<group>"; };
 		3EDB5A371E928D71002D903B /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		3EDB5A381E928D71002D903B /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		3EDB5A391E928D71002D903B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -102,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				3EDB5A391E928D71002D903B /* Constants.swift */,
+				3EA718B41EA8F1C300275218 /* Layouts */,
+				3EA718B91EA8F61700275218 /* Extensions */,
 				3EAAC87F1E964DD000F59FE1 /* Models */,
 				93ED11DF1E8097EC00C5C81B /* Views */,
 				93ED11DA1E80949400C5C81B /* View Controllers */,
@@ -113,6 +123,22 @@
 				1E8C9C421E679C6A0022577F /* Info.plist */,
 			);
 			path = GroupDiscountApp;
+			sourceTree = "<group>";
+		};
+		3EA718B41EA8F1C300275218 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				3EA718B51EA8F1FD00275218 /* PinterestLayout.swift */,
+			);
+			name = Layouts;
+			sourceTree = "<group>";
+		};
+		3EA718B91EA8F61700275218 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3EA718BA1EA8F62E00275218 /* UIImage+Decompression.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		3EAAC87E1E964C6A00F59FE1 /* Utilities */ = {
@@ -167,7 +193,9 @@
 			children = (
 				3E3FA1351E942E3E000BC0F6 /* InfiniteScrollActivityView.swift */,
 				93ED11E21E80984700C5C81B /* EventsCell.swift */,
+				3EA718B71EA8F2B300275218 /* RoundedCornersView.swift */,
 				93ED11E81E809EA100C5C81B /* DateTableViewCell.swift */,
+				3EA718BC1EA8F89100275218 /* AnnotatedPhotoCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -244,6 +272,7 @@
 			files = (
 				1E8C9C411E679C6A0022577F /* LaunchScreen.storyboard in Resources */,
 				1E8C9C3E1E679C6A0022577F /* Assets.xcassets in Resources */,
+				3EA718B81EA8F2B300275218 /* RoundedCornersView.swift in Resources */,
 				1E8C9C3C1E679C6A0022577F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93ED11E91E809EA100C5C81B /* DateTableViewCell.swift in Sources */,
+				3EA718B61EA8F1FD00275218 /* PinterestLayout.swift in Sources */,
 				93ED11E71E809E3F00C5C81B /* GroupViewController.swift in Sources */,
 				3EE8991C1E96891000A5E4D2 /* StubhubClient.swift in Sources */,
 				3EDB5A401E928D71002D903B /* ChatViewController.swift in Sources */,
@@ -315,6 +345,7 @@
 				3EDB5A441E928D71002D903B /* Messages.swift in Sources */,
 				3EDB5A451E928D71002D903B /* PushNotification.swift in Sources */,
 				3EDB5A431E928D71002D903B /* Images.swift in Sources */,
+				3EA718BB1EA8F62E00275218 /* UIImage+Decompression.swift in Sources */,
 				3E0D45EA1E96DF08001153C5 /* Event.swift in Sources */,
 				3EDB5A461E928D71002D903B /* Utilities.swift in Sources */,
 				93ED11DC1E8094B000C5C81B /* LoginViewController.swift in Sources */,
@@ -325,6 +356,7 @@
 				93ED11E51E809C1700C5C81B /* EventViewController.swift in Sources */,
 				3E3FA1301E94258D000BC0F6 /* YelpClient.swift in Sources */,
 				3EDB5A411E928D71002D903B /* Constants.swift in Sources */,
+				3EA718BD1EA8F89100275218 /* AnnotatedPhotoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

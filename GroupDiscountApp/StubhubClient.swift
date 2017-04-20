@@ -27,14 +27,14 @@ class StubhubClient: NSObject {
         self.baseUrlString = baseUrlString
     }
     
-    func searchWithTerm(_ term: String, completion: @escaping ([Event]?, Error?) -> Void) -> Void {
-        return searchWithTerm(term, sort: nil, categories: nil, deals: nil, start: nil, completion: completion)
+    func searchWith(_ q: String, completion: @escaping ([Event]?, Error?) -> Void) -> Void {
+        return searchWith(q, sort: nil, categories: nil, deals: nil, start: nil, completion: completion)
     }
 
-    func searchWithTerm(_ term: String, sort: String?, categories: [String]?, deals: Bool?, start: Int?, completion: @escaping ([Event]?, Error?) -> Void) -> Void {
+    func searchWith(_ q: String, sort: String?, categories: [String]?, deals: Bool?, start: Int?, completion: @escaping ([Event]?, Error?) -> Void) -> Void {
         
-        // valid sort fields: popularity, eventDateLocal, distance
-        var parameters: Parameters = ["minAvailableTickets":1, "city":"New York", "sort":"eventDateLocal desc"]
+        // valid sort fields: popularity, eventDateLocal, distance with desc or asc order
+        var parameters: Parameters = ["minAvailableTickets":1, "rows":20, "city":"New York", "sort":"eventDateLocal asc"]
         let header: HTTPHeaders = ["Authorization": "Bearer \(appToken!)"]
         let parameterEncoding = URLEncoding(destination: .queryString)
         
@@ -75,7 +75,6 @@ class StubhubClient: NSObject {
                     return
             }
             
-            //print(dictionaries)
             completion(Event.events(array: dictionaries), nil)
             
         }

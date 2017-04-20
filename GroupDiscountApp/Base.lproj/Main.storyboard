@@ -281,7 +281,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Events" id="xu2-nj-YkU"/>
+                    <tabBarItem key="tabBarItem" title="My Events" image="myevents" id="xu2-nj-YkU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0Z-zV-U2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -669,7 +669,7 @@
         <scene sceneID="q2R-WA-1id">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aD9-dt-KAv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="All Events" id="wCh-TZ-wh0"/>
+                    <tabBarItem key="tabBarItem" title="All Events" image="allevents" id="wCh-TZ-wh0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jMI-BO-Cfl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -688,7 +688,7 @@
         <scene sceneID="XG7-S3-VeY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iVk-wd-ZAP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Account" id="I8n-Eg-AQs"/>
+                    <tabBarItem key="tabBarItem" title="My Account" image="user" id="I8n-Eg-AQs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JhR-G6-Bzv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -723,7 +723,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="allevents" width="24" height="24"/>
+        <image name="myevents" width="24" height="24"/>
         <image name="profile_blank" width="70" height="70"/>
+        <image name="user" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0R3-Qc-eva"/>
