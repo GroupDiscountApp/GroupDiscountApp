@@ -120,4 +120,8 @@ class PinterestLayout: UICollectionViewLayout {
         return layoutAttributes
     }
     
+    override func invalidateLayout() {
+        cache.removeAll()
+        super.invalidateLayout()
+    }
 }

@@ -19,12 +19,14 @@ let urlString = "https://api.stubhub.com/search/catalog/events/v3"
 class StubhubClient: NSObject {
     var appToken: String!
     var baseUrlString: String!
+    var numFound: Int?
 
-    static let sharedInstance = StubhubClient(baseUrlString: urlString, appToken: stubhubToken)
+    static let sharedInstance = StubhubClient(baseUrlString: urlString, appToken: stubhubToken, numFound: nil)
     
-    init(baseUrlString: String!, appToken: String!) {
+    init(baseUrlString: String!, appToken: String!, numFound: Int?) {
         self.appToken = appToken
         self.baseUrlString = baseUrlString
+        self.numFound = numFound
     }
     
     func searchWith(_ q: String, completion: @escaping ([Event]?, Error?) -> Void) -> Void {
@@ -51,8 +53,12 @@ class StubhubClient: NSObject {
         }
         
         if start != nil {
+            if start! >= self.numFound! {
+                // TODO: some error
+            }
             parameters["start"] = start! as Any
         }
+        
 
         Alamofire.request(
             URL(string: baseUrlString)!,
@@ -67,13 +73,15 @@ class StubhubClient: NSObject {
                 completion(nil, nil)
                 return
             }
-
+            
             guard let value = response.result.value as? [String: Any],
                 let dictionaries = value["events"] as? [NSDictionary] else {
                     print("Malformed data received from stubhub service")
                     completion(nil, nil)
                     return
             }
+            
+            self.numFound = value["numFound"] as? Int
             
             completion(Event.events(array: dictionaries), nil)
             

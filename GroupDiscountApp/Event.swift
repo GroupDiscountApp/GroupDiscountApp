@@ -15,7 +15,8 @@ class Event: NSObject {
     let lat: NSNumber?
     let lon: NSNumber?
     let imageUrl: URL?
-    let image: UIImage?
+    //let image: UIImage?
+    let imageSize: CGSize
     let eventDate: Date?
     let ticketMinPrice: Float?
     let ticketMaxPrice: Float?
@@ -27,7 +28,7 @@ class Event: NSObject {
     let eventUrl: URL?
     
     init(dictionary: NSDictionary) {
-        print(dictionary)
+        //print(dictionary)
         
         name = dictionary["name"] as? String
         id = dictionary["id"] as? Int
@@ -54,12 +55,18 @@ class Event: NSObject {
         } else {
             imageUrl = nil
         }
-        if let imageData: NSData = NSData(contentsOf: eventUrl!) {
-            image = UIImage(data: imageData as Data)?.decompressedImage
-        } else {
-            image = nil
+        let width = imageDict?["width"] as? CGFloat
+        let height = imageDict?["height"] as? CGFloat
+        imageSize = CGSize(width: width!, height: height!)
+        /*
+        var imageData: Data? = nil
+        do {
+            imageData = try Data(contentsOf: imageUrl!)
+        } catch {
+            print(error.localizedDescription)
         }
-        
+        image = UIImage(data: imageData!)
+        */
         let formatter = DateFormatter()
         locale = dictionary["defaultLocale"] as? String
         formatter.locale = Locale(identifier: locale!)

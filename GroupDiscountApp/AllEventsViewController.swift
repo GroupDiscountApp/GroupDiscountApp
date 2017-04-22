@@ -9,35 +9,40 @@
 import UIKit
 import AVFoundation
 
-class AllEventsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UIScrollViewDelegate {
+class AllEventsViewController: UICollectionViewController {
 
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    var businesses: [Business]!
-    //var filtered: [Business]!
     var events: [Event]!
     var filtered: [Event]!
     var searchBar: UISearchBar!
     var isMoreDataLoading = false
-    var loadingMoreView:InfiniteScrollActivityView?
+    var loadingMoreView: InfiniteScrollActivityView?
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        //tableView.rowHeight = UITableViewAutomaticDimension
-        //tableView.estimatedRowHeight = 120
+        if let patternImage = UIImage(named: "Pattern") {
+            view.backgroundColor = UIColor(patternImage: patternImage)
+        }
+        // Set the PinterestLayout delegate
+        if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
+            layout.delegate = self
+        }
+        collectionView!.backgroundColor = UIColor.clear
+        //collectionView!.contentInset = UIEdgeInsets(top: 23, left: 5, bottom: 10, right: 5)
         
         // Set up Infinite Scroll loading indicator
-        let frame = CGRect(x: 0, y: collectionView.contentSize.height, width: collectionView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+        let frame = CGRect(x: 0, y: (collectionView?.contentSize.height)!, width: (collectionView?.bounds.size.width)!, height: InfiniteScrollActivityView.defaultHeight)
         loadingMoreView = InfiniteScrollActivityView(frame: frame)
         loadingMoreView!.isHidden = true
-        collectionView.addSubview(loadingMoreView!)
+        collectionView?.addSubview(loadingMoreView!)
         
-        var insets = collectionView.contentInset
-        insets.bottom += InfiniteScrollActivityView.defaultHeight
-        collectionView.contentInset = insets
+        var insets = collectionView?.contentInset
+        insets?.bottom += InfiniteScrollActivityView.defaultHeight
+        collectionView?.contentInset = insets!
         
         searchBar = UISearchBar()
         searchBar.delegate = self
@@ -45,23 +50,12 @@ class AllEventsViewController: UIViewController, UICollectionViewDataSource, UIC
         navigationItem.titleView = searchBar
         //navigationController?.navigationBar.barTintColor = UIColor.red
         
-        /*
-        Business.searchWithTerm(term: "", sort: nil, categories: nil, deals: nil, offset: 0, completion: { (businesses: [Business]?, error: Error?) in
-            
-            self.businesses = businesses
-            self.filtered = businesses
-            self.collectionView.reloadData()
-            
-            }
-        )
-        */
-        
         Event.searchWith(q: "") { (events: [Event]?, error: Error?) in
             self.events = events
             self.filtered = events
-            self.collectionView.reloadData()
-            
+            self.collectionView?.reloadData()
         }
+        
         
     }
     
@@ -70,7 +64,20 @@ class AllEventsViewController: UIViewController, UICollectionViewDataSource, UIC
         // Dispose of any resources that can be recreated.
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! EventViewController
+        let indexPath = collectionView?.indexPathsForSelectedItems?.first
+        let event = filtered[(indexPath?.item)!]
+        vc.event = event
+    }
+    
+}
+
+extension AllEventsViewController {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if filtered != nil {
             return filtered!.count
         } else {
@@ -78,85 +85,58 @@ class AllEventsViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventsCell", for: indexPath) as! EventsCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventsCell", for: indexPath) as! EventsCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnnotatedPhotoCell", for: indexPath) as! AnnotatedPhotoCell
         
-        //cell.business = filtered![indexPath.item]
         cell.event = filtered![indexPath.item]
         return cell
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        /*
-        filtered = searchText.isEmpty ? businesses : businesses.filter { (item: Business) -> Bool in
-            return item.name?.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
-        */
-        filtered = searchText.isEmpty ? events : events.filter { (item: Event) -> Bool in
-            return item.name?.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
-        collectionView.reloadData()
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (!isMoreDataLoading) {
             
-            let scrollViewContentHeight = collectionView.contentSize.height
-            let scrollOffsetThreshold = scrollViewContentHeight - collectionView.bounds.size.height
+            let scrollViewContentHeight = collectionView?.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight! - (collectionView?.bounds.size.height)!
             
-            if (scrollView.contentOffset.y > scrollOffsetThreshold && collectionView.isDragging) {
+            if (scrollView.contentOffset.y > scrollOffsetThreshold && (collectionView?.isDragging)!) {
                 isMoreDataLoading = true
                 
                 // Update position of loadingMoreView, and start loading indicator
-                let frame = CGRect(x: 0, y: collectionView.contentSize.height, width: collectionView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+                let frame = CGRect(x: 0, y: (collectionView?.contentSize.height)!, width: (collectionView?.bounds.size.width)!, height: InfiniteScrollActivityView.defaultHeight)
                 loadingMoreView?.frame = frame
                 loadingMoreView!.startAnimating()
                 
-                let start = self.collectionView.numberOfItems(inSection: 0)
-                /*
-                Business.searchWithTerm(term: "", sort: nil, categories: ["yelpevents"], deals: nil, offset: offset, completion: { (businesses: [Business]?, error: Error?) in
-                    
-                    self.isMoreDataLoading = false
-                    self.loadingMoreView!.stopAnimating()
-                    self.businesses! += businesses!
-                    self.filtered = self.businesses
-                    self.collectionView.reloadData()
-                    
-                }
-                )
-                */
+                let start = self.collectionView?.numberOfItems(inSection: 0)
+                
                 Event.searchWith(q: "", sort: nil, categories: nil, deals: nil, start: start) { (events: [Event]?, error: Error?) in
                     self.isMoreDataLoading = false
                     self.loadingMoreView!.stopAnimating()
                     self.events! += events!
                     self.filtered = self.events
-                    self.collectionView.reloadData()
-                    
+                    self.collectionView?.collectionViewLayout.invalidateLayout()
+                    self.collectionView?.reloadData()
                 }
             }
         }
     }
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        let vc = segue.destination as! EventViewController
-        let indexPath = collectionView.indexPathsForSelectedItems?.first
-        let event = filtered[(indexPath?.item)!]
-        vc.event = event
+}
+
+extension AllEventsViewController : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filtered = searchText.isEmpty ? events : events.filter { (item: Event) -> Bool in
+            return item.name?.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        collectionView?.reloadData()
     }
-    
 }
 
 extension AllEventsViewController : PinterestLayoutDelegate {
     // 1. Returns the photo height
     func collectionView(_ collectionView:UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath , withWidth width:CGFloat) -> CGFloat {
-        let event = events[indexPath.item]
+        let event = filtered[indexPath.item]
         let boundingRect =  CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
-        let rect  = AVMakeRect(aspectRatio: (event.image?.size)!, insideRect: boundingRect)
+        let rect  = AVMakeRect(aspectRatio: event.imageSize, insideRect: boundingRect)
         return rect.size.height
     }
     
@@ -165,7 +145,7 @@ extension AllEventsViewController : PinterestLayoutDelegate {
         let annotationPadding = CGFloat(4)
         let annotationHeaderHeight = CGFloat(17)
         
-        let event = events[indexPath.item]
+        let event = filtered[indexPath.item]
         let font = UIFont(name: "AvenirNext-Regular", size: 10)!
         let commentHeight = event.heightForComment(font, width: width)
         let height = annotationPadding + annotationHeaderHeight + commentHeight + annotationPadding
