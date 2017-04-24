@@ -7,51 +7,36 @@
 //
 
 import UIKit
+import MapKit
 
 class EventViewController: UIViewController {
 
-    @IBOutlet weak var thumbImageView: UIImageView!
-    @IBOutlet weak var categoriesLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var ratingImageView: UIImageView!
-    @IBOutlet weak var reviewsCountLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
     var event: Event!
+    var image: UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        thumbImageView.layer.cornerRadius = 3
-        thumbImageView.clipsToBounds = true
         
-        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
+        mapView.delegate = self
         
-        /*
-        nameLabel.text = event.name
-        thumbImageView.setImageWith(event.imageURL!)
-        categoriesLabel.text = event.categories
-        addressLabel.text = event.address
-        reviewsCountLabel.text = "\(event.reviewCount!) Reviews"
-        ratingImageView.setImageWith(event.ratingImageURL!)
-        distanceLabel.text = event.distance
-        */
-        nameLabel.text = event.name
-        thumbImageView.setImageWith(event.imageUrl!)
-        categoriesLabel.text = "# tickets: \(event.totalTickets!)"
-        addressLabel.text = event.address
+        let lat = CLLocationDegrees(event.lat!)
+        let lon = CLLocationDegrees(event.lon!)
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: center, span: span)
+        mapView.setRegion(region, animated: false)
         
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: event.locale!)
-        formatter.dateFormat = "EEEE, MMMM dd, yyyy' at 'h:mm a"
-        reviewsCountLabel.text = formatter.string(from: event.eventDate!)
-        let nFormatter = NumberFormatter()
-        nFormatter.numberStyle = .currency
-        nFormatter.maximumFractionDigits = 2;
-        nFormatter.locale = Locale(identifier: event.locale!)
-        distanceLabel.text = nFormatter.string(from: event.ticketMinPrice! as NSNumber)!+"-"+nFormatter.string(from: event.ticketMaxPrice! as NSNumber)!
+        let annotation = PhotoAnnotation()
+        annotation.coordinate = center
+        annotation.photo = image
+        annotation.title = event.name
+        annotation.comment = event.comment
+        self.mapView.addAnnotation(annotation)
+        mapView.selectAnnotation(mapView.annotations[0], animated: true)
         
     }
 
@@ -75,4 +60,40 @@ class EventViewController: UIViewController {
     }
     
 
+}
+
+extension EventViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseId = "myAnnotationView"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        if annotationView == nil {
+            //annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            annotationView!.canShowCallout = true
+            annotationView!.leftCalloutAccessoryView = UIImageView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(50), height: CGFloat(50)))
+        }
+        let imageView = annotationView!.leftCalloutAccessoryView as! UIImageView
+        
+        var resizeRenderImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
+        resizeRenderImageView.layer.borderColor = UIColor.white.cgColor
+        resizeRenderImageView.layer.borderWidth = 3.0
+        resizeRenderImageView.contentMode = .scaleAspectFill
+        resizeRenderImageView.image = (annotation as? PhotoAnnotation)?.photo
+        
+        UIGraphicsBeginImageContext(resizeRenderImageView.frame.size)
+        resizeRenderImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        var thumbnail: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        imageView.image = thumbnail
+        
+        let detailButton = UIButton(type: .detailDisclosure)
+        annotationView!.rightCalloutAccessoryView = detailButton
+        //annotationView!.image = imageView.image
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        UIApplication.shared.open(event.eventUrl!, options: [:], completionHandler: nil)
+    }
 }

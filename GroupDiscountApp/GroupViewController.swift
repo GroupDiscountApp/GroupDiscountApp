@@ -10,6 +10,8 @@ import UIKit
 
 class GroupViewController: UIViewController {
 
+    @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     var groupId: String!
     var event: Event!
     
@@ -17,6 +19,7 @@ class GroupViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        eventNameLabel.text = event.name
     }
 
     override func didReceiveMemoryWarning() {

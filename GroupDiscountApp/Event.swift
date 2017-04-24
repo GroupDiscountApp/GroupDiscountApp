@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class Event: NSObject {
     
@@ -110,7 +111,7 @@ class Event: NSObject {
         _ = StubhubClient.sharedInstance.searchWith(q, completion: completion)
     }
     
-    class func searchWith(q: String, sort: String?, categories: [String]?, deals: Bool?, start: Int?, completion: @escaping ([Event]?, Error?) -> Void) -> Void {
-        _ = StubhubClient.sharedInstance.searchWith(q, sort: sort, categories: categories, deals: deals, start: start, completion: completion)
+    class func searchWith(q: String, sort: String?, start: Int?, point: CLLocationCoordinate2D?, completion: @escaping ([Event]?, Error?) -> Void) -> Void {
+        _ = StubhubClient.sharedInstance.searchWith(q, sort: sort, start: start, point: point, completion: completion)
     }
 }

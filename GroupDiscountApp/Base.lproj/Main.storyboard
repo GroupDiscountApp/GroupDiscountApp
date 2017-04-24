@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="89k-Kj-3Hw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="89k-Kj-3Hw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -178,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b5I-iH-BBL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-156" y="768"/>
+            <point key="canvasLocation" x="270" y="768"/>
         </scene>
         <!--Profile-->
         <scene sceneID="U0f-6r-7W1">
@@ -266,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wun-Mj-i7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2500" y="752"/>
+            <point key="canvasLocation" x="1993" y="768"/>
         </scene>
         <!--All Events View Controller-->
         <scene sceneID="gfm-vh-0QT">
@@ -356,7 +356,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ytp-QL-OT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3210" y="-314"/>
+            <point key="canvasLocation" x="2729" y="-314"/>
         </scene>
         <!--My Events-->
         <scene sceneID="SX5-gM-H1d">
@@ -375,7 +375,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0Z-zV-U2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3826" y="465"/>
+            <point key="canvasLocation" x="2729" y="379"/>
         </scene>
         <!--Event View Controller-->
         <scene sceneID="CCr-F2-qVc">
@@ -389,90 +389,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Et9-aI-fix">
-                                <rect key="frame" x="0.0" y="373" width="375" height="245"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="qM5-r0-QER"/>
-                                    <constraint firstAttribute="height" constant="245" id="vHK-kJ-4oi"/>
-                                </constraints>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y39-AP-F2G">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="1. Grand Pu Bah" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3B-X8-N9Q">
-                                <rect key="frame" x="73" y="192" width="115" height="18"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="88 Division St, Mission Bay" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgU-Gy-H4N">
-                                <rect key="frame" x="73" y="232" width="164" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" ambiguous="YES" text="0.07 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDC-57-KHc">
-                                <rect key="frame" x="262" y="194" width="45" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.46268242389999997" green="0.46268242389999997" blue="0.46268242389999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Thai, Seafood, Salad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDx-qQ-v1e">
-                                <rect key="frame" x="73" y="252" width="125" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.46268242389999997" green="0.46268242389999997" blue="0.46268242389999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e1H-zD-hnt">
-                                <rect key="frame" x="0.0" y="64" width="375" height="98"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="FT3-9B-ETO"/>
-                                    <constraint firstAttribute="height" constant="98" id="XTC-EO-Otn"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6W-2h-uCp">
-                                <rect key="frame" x="73" y="276" width="79" height="30"/>
-                                <state key="normal" title="List Groups"/>
-                                <connections>
-                                    <segue destination="WP6-PN-5dz" kind="show" identifier="listGroupsSegue" id="iZo-Vd-opo"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="469 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lJ-Dj-Zvi">
-                                <rect key="frame" x="73" y="214" width="78" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.46268242389999997" green="0.46268242389999997" blue="0.46268242389999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="q6W-2h-uCp" firstAttribute="leading" secondItem="oDx-qQ-v1e" secondAttribute="leading" id="0fW-xj-sGx"/>
-                            <constraint firstItem="Et9-aI-fix" firstAttribute="top" relation="greaterThanOrEqual" secondItem="q6W-2h-uCp" secondAttribute="bottom" constant="10" id="1zB-ah-7mR"/>
-                            <constraint firstItem="q6W-2h-uCp" firstAttribute="top" secondItem="oDx-qQ-v1e" secondAttribute="bottom" constant="8" id="7gj-By-Xrv"/>
-                            <constraint firstItem="CDC-57-KHc" firstAttribute="top" secondItem="e1H-zD-hnt" secondAttribute="bottom" constant="32" id="7l7-dE-WFj"/>
-                            <constraint firstItem="e1H-zD-hnt" firstAttribute="top" secondItem="P2P-FD-3U5" secondAttribute="bottom" id="BOb-Nf-6Jh"/>
-                            <constraint firstAttribute="trailing" secondItem="e1H-zD-hnt" secondAttribute="trailing" id="H4O-R6-pp8"/>
-                            <constraint firstItem="oDx-qQ-v1e" firstAttribute="top" secondItem="PgU-Gy-H4N" secondAttribute="bottom" constant="4" id="IEC-KZ-PFf"/>
-                            <constraint firstItem="PgU-Gy-H4N" firstAttribute="top" secondItem="9lJ-Dj-Zvi" secondAttribute="bottom" constant="2" id="Nd7-pW-Auc"/>
-                            <constraint firstItem="oDx-qQ-v1e" firstAttribute="leading" secondItem="PgU-Gy-H4N" secondAttribute="leading" id="ROM-tl-rKt"/>
-                            <constraint firstItem="9lJ-Dj-Zvi" firstAttribute="leading" secondItem="N3B-X8-N9Q" secondAttribute="leading" id="VJE-h7-Kil"/>
-                            <constraint firstItem="CDC-57-KHc" firstAttribute="leading" secondItem="N3B-X8-N9Q" secondAttribute="trailing" constant="8" id="XTn-9O-5ZO"/>
-                            <constraint firstItem="N3B-X8-N9Q" firstAttribute="top" secondItem="e1H-zD-hnt" secondAttribute="bottom" constant="30" id="cPF-xZ-xzf"/>
-                            <constraint firstItem="oDx-qQ-v1e" firstAttribute="leading" secondItem="N3B-X8-N9Q" secondAttribute="leading" id="j52-uE-gvc"/>
-                            <constraint firstItem="e1H-zD-hnt" firstAttribute="leading" secondItem="o5Z-Wc-aX6" secondAttribute="leading" id="mm2-gi-Ovo"/>
-                            <constraint firstItem="9lJ-Dj-Zvi" firstAttribute="top" secondItem="N3B-X8-N9Q" secondAttribute="bottom" constant="4" id="oOD-aP-deZ"/>
-                            <constraint firstItem="PgU-Gy-H4N" firstAttribute="leading" secondItem="N3B-X8-N9Q" secondAttribute="leading" id="tK6-g7-7Uh"/>
+                            <constraint firstItem="Y39-AP-F2G" firstAttribute="leading" secondItem="o5Z-Wc-aX6" secondAttribute="leading" id="Ny6-ee-hfR"/>
+                            <constraint firstAttribute="trailing" secondItem="Y39-AP-F2G" secondAttribute="trailing" id="d4X-W9-f2A"/>
+                            <constraint firstItem="Y39-AP-F2G" firstAttribute="top" secondItem="o5Z-Wc-aX6" secondAttribute="top" id="rFZ-he-KQi"/>
+                            <constraint firstItem="sxb-lE-QHj" firstAttribute="top" secondItem="Y39-AP-F2G" secondAttribute="bottom" id="ukX-gT-yJ1"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Lmw-b1-oG5">
+                        <barButtonItem key="rightBarButtonItem" title="Groups" id="2xR-qm-4ji">
+                            <connections>
+                                <segue destination="WP6-PN-5dz" kind="show" identifier="listGroupsSegue" id="fT7-Wb-fUZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="addressLabel" destination="PgU-Gy-H4N" id="fpB-1k-ZTs"/>
-                        <outlet property="categoriesLabel" destination="oDx-qQ-v1e" id="K1P-D6-5rK"/>
-                        <outlet property="distanceLabel" destination="CDC-57-KHc" id="erm-CJ-7Pr"/>
-                        <outlet property="nameLabel" destination="N3B-X8-N9Q" id="0od-4P-0JG"/>
-                        <outlet property="reviewsCountLabel" destination="9lJ-Dj-Zvi" id="Db5-fc-vtW"/>
-                        <outlet property="thumbImageView" destination="e1H-zD-hnt" id="1Nf-PU-kvF"/>
+                        <outlet property="mapView" destination="Y39-AP-F2G" id="iB4-Ma-Mfw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cc-wE-eHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4047" y="-314"/>
+            <point key="canvasLocation" x="3444" y="-314.39280359820094"/>
         </scene>
         <!--Group View Controller-->
         <scene sceneID="g1J-gF-OBU">
@@ -505,14 +447,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Going"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLD-FQ-rM1">
-                                <rect key="frame" x="243" y="305" width="33" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Chat"/>
-                                <connections>
-                                    <segue destination="tqH-hf-QAo" kind="show" identifier="groupChatSegue" id="ibL-X3-p2n"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total group members:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgC-ui-a2s">
                                 <rect key="frame" x="35" y="371" width="168" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -540,10 +474,21 @@
                             <constraint firstAttribute="trailing" secondItem="Ecv-XL-q5p" secondAttribute="trailing" id="dyJ-KS-aIY"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="vda-j6-pQO">
+                        <barButtonItem key="rightBarButtonItem" title="Chat" id="yXj-gD-8Wj">
+                            <connections>
+                                <segue destination="tqH-hf-QAo" kind="show" identifier="groupChatSegue" id="jTu-c8-ai6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="eventNameLabel" destination="kzD-gY-9wT" id="kso-p2-5Ot"/>
+                        <outlet property="tableView" destination="ZAj-u1-AZ0" id="x7H-Pe-ZXx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZX-La-9ef" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5905" y="-314"/>
+            <point key="canvasLocation" x="4894" y="-314"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="M7A-H8-QIj">
@@ -562,7 +507,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RSV-ko-pV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1351" y="35"/>
+            <point key="canvasLocation" x="1100" y="35"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nvB-ne-Mmr">
@@ -580,9 +525,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qwM-Oo-YCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1023" y="768"/>
+            <point key="canvasLocation" x="-575" y="768"/>
         </scene>
-        <!--Group-->
+        <!--Groups-->
         <scene sceneID="Mp5-uj-YN3">
             <objects>
                 <tableViewController id="WP6-PN-5dz" customClass="GroupsViewController" customModule="GroupDiscountApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -605,7 +550,7 @@
                             <outlet property="delegate" destination="WP6-PN-5dz" id="QpD-Ci-io8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Group" id="Zhk-zO-lYG">
+                    <navigationItem key="navigationItem" title="Groups" id="Zhk-zO-lYG">
                         <barButtonItem key="rightBarButtonItem" title="New" id="3aU-6N-weT">
                             <connections>
                                 <action selector="newButtonPressed:" destination="WP6-PN-5dz" id="G9d-q2-H0P"/>
@@ -618,7 +563,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPv-mo-reK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4967" y="-314"/>
+            <point key="canvasLocation" x="4174" y="-314"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="C3g-20-gTW">
@@ -636,7 +581,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySN-yr-yHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6823" y="-314"/>
+            <point key="canvasLocation" x="5596" y="-314"/>
         </scene>
         <!--My Account-->
         <scene sceneID="XG7-S3-VeY">
@@ -655,7 +600,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BZJ-9e-MEs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1720.8" y="751.57421289355329"/>
+            <point key="canvasLocation" x="1236" y="768"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="INf-go-Ilk">
@@ -692,7 +637,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZdG-Fd-8r7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2415" y="-314"/>
+            <point key="canvasLocation" x="1993" y="-314"/>
         </scene>
     </scenes>
     <resources>
@@ -702,6 +647,6 @@
         <image name="user" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0R3-Qc-eva"/>
+        <segue reference="ake-Uq-7WF"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 import AVFoundation
 
 class AllEventsViewController: UICollectionViewController {
@@ -16,22 +17,37 @@ class AllEventsViewController: UICollectionViewController {
     var searchBar: UISearchBar!
     var isMoreDataLoading = false
     var loadingMoreView: InfiniteScrollActivityView?
+    var locationManager: CLLocationManager!
+    var lastLocation : CLLocationCoordinate2D!
+    
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        // user location
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 200
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
         if let patternImage = UIImage(named: "Pattern") {
             view.backgroundColor = UIColor(patternImage: patternImage)
         }
+        */
         // Set the PinterestLayout delegate
         if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
             layout.delegate = self
         }
-        collectionView!.backgroundColor = UIColor.clear
+        //collectionView!.backgroundColor = UIColor.clear
         //collectionView!.contentInset = UIEdgeInsets(top: 23, left: 5, bottom: 10, right: 5)
         
         // Set up Infinite Scroll loading indicator
@@ -50,12 +66,17 @@ class AllEventsViewController: UICollectionViewController {
         navigationItem.titleView = searchBar
         //navigationController?.navigationBar.barTintColor = UIColor.red
         
-        Event.searchWith(q: "") { (events: [Event]?, error: Error?) in
-            self.events = events
-            self.filtered = events
-            self.collectionView?.reloadData()
+        let status = CLLocationManager.authorizationStatus()
+        if (!CLLocationManager.locationServicesEnabled() ||
+             status == CLAuthorizationStatus.notDetermined ||
+             status == CLAuthorizationStatus.restricted ||
+            status == CLAuthorizationStatus.denied) {
+            Event.searchWith(q: "") { (events: [Event]?, error: Error?) in
+                self.events = events
+                self.filtered = events
+                self.collectionView?.reloadData()
+            }
         }
-        
         
     }
     
@@ -70,6 +91,8 @@ class AllEventsViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! EventViewController
         let indexPath = collectionView?.indexPathsForSelectedItems?.first
+        let cell = sender as! AnnotatedPhotoCell
+        vc.image = cell.imageView.image
         let event = filtered[(indexPath?.item)!]
         vc.event = event
     }
@@ -109,7 +132,7 @@ extension AllEventsViewController {
                 
                 let start = self.collectionView?.numberOfItems(inSection: 0)
                 
-                Event.searchWith(q: "", sort: nil, categories: nil, deals: nil, start: start) { (events: [Event]?, error: Error?) in
+                Event.searchWith(q: "", sort: nil, start: start, point: lastLocation) { (events: [Event]?, error: Error?) in
                     self.isMoreDataLoading = false
                     self.loadingMoreView!.stopAnimating()
                     self.events! += events!
@@ -118,6 +141,42 @@ extension AllEventsViewController {
                     self.collectionView?.reloadData()
                 }
             }
+        }
+    }
+}
+
+extension AllEventsViewController : CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == CLAuthorizationStatus.authorizedWhenInUse {
+            manager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var location = locations.first as? CLLocation
+        lastLocation = location?.coordinate
+        
+        Event.searchWith(q: "", sort: nil, start: nil, point: lastLocation) { (events: [Event]?, error: Error?) in
+            self.events = events
+            self.filtered = events
+            self.collectionView?.reloadData()
+        }
+        
+        manager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        let err = error as! CLError
+        switch err.code {
+        case CLError.network:
+            var alert = UIAlertView(title: "Location Error!", message: "Can't access your current location! Please check your network connection or that you are not in airplane mode!", delegate: nil, cancelButtonTitle: "Ok", otherButtonTitles: "")
+            alert.show()
+        case CLError.denied:
+            var alert = UIAlertView(title: "Location Error!", message: "Location Access has been denied for app name!", delegate: nil, cancelButtonTitle: "Ok", otherButtonTitles: "")
+            // alert.tag=500;
+            alert.show()
+        default:
+            var alert = UIAlertView(title: "Location Error!", message: "Can't access your current location!", delegate: nil, cancelButtonTitle: "Ok", otherButtonTitles: "")
         }
     }
 }

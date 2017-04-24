@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreLocation
 import AFNetworking
 import BDBOAuth1Manager
 import Alamofire
@@ -30,20 +30,20 @@ class StubhubClient: NSObject {
     }
     
     func searchWith(_ q: String, completion: @escaping ([Event]?, Error?) -> Void) -> Void {
-        return searchWith(q, sort: nil, categories: nil, deals: nil, start: nil, completion: completion)
+        return searchWith(q, sort: nil,  start: nil, point: nil, completion: completion)
     }
 
-    func searchWith(_ q: String, sort: String?, categories: [String]?, deals: Bool?, start: Int?, completion: @escaping ([Event]?, Error?) -> Void) -> Void {
+    func searchWith(_ q: String, sort: String?, start: Int?, point: CLLocationCoordinate2D?, completion: @escaping ([Event]?, Error?) -> Void) -> Void {
         
         // valid sort fields: popularity, eventDateLocal, distance with desc or asc order
-        var parameters: Parameters = ["minAvailableTickets":1, "rows":20, "city":"New York", "sort":"eventDateLocal asc"]
+        var parameters: Parameters = ["minAvailableTickets":1, "rows":20, "sort":"eventDateLocal asc"]
         let header: HTTPHeaders = ["Authorization": "Bearer \(appToken!)"]
         let parameterEncoding = URLEncoding(destination: .queryString)
         
         if sort != nil {
             parameters["sort"] = sort! as Any
         }
-        
+        /*
         if categories != nil && categories!.count > 0 {
             parameters["category_filter"] = (categories!).joined(separator: ",") as Any
         }
@@ -51,7 +51,7 @@ class StubhubClient: NSObject {
         if deals != nil {
             parameters["deals_filter"] = deals! as Any
         }
-        
+        */
         if start != nil {
             if start! >= self.numFound! {
                 // TODO: some error
@@ -59,6 +59,16 @@ class StubhubClient: NSObject {
             parameters["start"] = start! as Any
         }
         
+        if point != nil {
+            let lat = point?.latitude
+            let lon = point?.longitude
+            let latlon: String = "\(lat!),\(lon!)"
+            parameters["point"] = latlon
+            print(latlon)
+            parameters["radius"] = 200
+        } else {
+            parameters["city"] = "New York"
+        }
 
         Alamofire.request(
             URL(string: baseUrlString)!,

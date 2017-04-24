@@ -54,6 +54,7 @@ let PF_CHAT_CREATEDAT					= "createdAt"               //	Date
 let PF_GROUPS_CLASS_NAME				= "Groups"                  //	Class name
 let PF_GROUPS_NAME                      = "name"					//	String
 let PF_GROUPS_EVENT_ID                  = "eventId"                 //  Number
+let PF_GROUPS_USERS                     = "users"                   //  Array of Users
 
 /* Messages*/
 let PF_MESSAGES_CLASS_NAME				= "Messages"				//	Class name
