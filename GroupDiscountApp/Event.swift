@@ -17,7 +17,7 @@ class Event: NSObject {
     let lon: NSNumber?
     let imageUrl: URL?
     //let image: UIImage?
-    let imageSize: CGSize
+    let imageSize: CGSize?
     let eventDate: Date?
     let ticketMinPrice: Float?
     let ticketMaxPrice: Float?
@@ -58,7 +58,7 @@ class Event: NSObject {
         }
         let width = imageDict?["width"] as? CGFloat
         let height = imageDict?["height"] as? CGFloat
-        imageSize = CGSize(width: width!, height: height!)
+        imageSize = (width != nil)&&(height != nil) ? CGSize(width: width!, height: height!) : nil
         /*
         var imageData: Data? = nil
         do {

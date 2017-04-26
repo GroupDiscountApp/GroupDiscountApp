@@ -64,7 +64,6 @@ class StubhubClient: NSObject {
             let lon = point?.longitude
             let latlon: String = "\(lat!),\(lon!)"
             parameters["point"] = latlon
-            print(latlon)
             parameters["radius"] = 200
         } else {
             parameters["city"] = "New York"

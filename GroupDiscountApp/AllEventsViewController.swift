@@ -66,18 +66,6 @@ class AllEventsViewController: UICollectionViewController {
         navigationItem.titleView = searchBar
         //navigationController?.navigationBar.barTintColor = UIColor.red
         
-        let status = CLLocationManager.authorizationStatus()
-        if (!CLLocationManager.locationServicesEnabled() ||
-             status == CLAuthorizationStatus.notDetermined ||
-             status == CLAuthorizationStatus.restricted ||
-            status == CLAuthorizationStatus.denied) {
-            Event.searchWith(q: "") { (events: [Event]?, error: Error?) in
-                self.events = events
-                self.filtered = events
-                self.collectionView?.reloadData()
-            }
-        }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -150,6 +138,17 @@ extension AllEventsViewController : CLLocationManagerDelegate {
         if status == CLAuthorizationStatus.authorizedWhenInUse {
             manager.startUpdatingLocation()
         }
+        let stat = CLLocationManager.authorizationStatus()
+        if (!CLLocationManager.locationServicesEnabled() ||
+            stat == CLAuthorizationStatus.notDetermined ||
+            stat == CLAuthorizationStatus.restricted ||
+            stat == CLAuthorizationStatus.denied) {
+            Event.searchWith(q: "") { (events: [Event]?, error: Error?) in
+                self.events = events
+                self.filtered = events
+                self.collectionView?.reloadData()
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -195,7 +194,7 @@ extension AllEventsViewController : PinterestLayoutDelegate {
     func collectionView(_ collectionView:UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath , withWidth width:CGFloat) -> CGFloat {
         let event = filtered[indexPath.item]
         let boundingRect =  CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
-        let rect  = AVMakeRect(aspectRatio: event.imageSize, insideRect: boundingRect)
+        let rect  = AVMakeRect(aspectRatio: event.imageSize!, insideRect: boundingRect)
         return rect.size.height
     }
     

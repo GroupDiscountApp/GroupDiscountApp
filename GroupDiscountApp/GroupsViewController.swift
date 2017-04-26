@@ -68,7 +68,7 @@ class GroupsViewController: UITableViewController, UIAlertViewDelegate {
                     var object = PFObject(className: PF_GROUPS_CLASS_NAME)
                     object[PF_GROUPS_NAME] = text
                     object[PF_GROUPS_EVENT_ID] = event.id
-                    object[PF_GROUPS_USERS] = [PFUser.current()?.objectId]
+                    object[PF_GROUPS_USERS] = [PFUser.current()!]
                     object.saveInBackground(block: { (success: Bool, error: Error?) in
                         if success {
                             self.loadGroups()
@@ -123,18 +123,17 @@ class GroupsViewController: UITableViewController, UIAlertViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         var group = self.groups[indexPath.row]
-        let groupId = group.objectId! as String
-        
-        Messages.createMessageItem(user: PFUser.current()!, groupId: groupId, description: group[PF_GROUPS_NAME] as! String)
-        
-        self.performSegue(withIdentifier: "groupDetailSegue", sender: groupId )
+        self.performSegue(withIdentifier: "groupDetailSegue", sender: group )
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "groupDetailSegue" {
             let vc = segue.destination as! GroupViewController
-            let groupId = sender as! String
+            let group = sender as! PFObject
+            let groupId = group.objectId! as String
+            let groupName = group[PF_GROUPS_NAME] as? String
             vc.groupId = groupId
+            vc.groupName = groupName
             vc.event = event
         }
         /*
