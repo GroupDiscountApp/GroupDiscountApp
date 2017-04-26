@@ -118,6 +118,7 @@ class GroupViewController: UITableViewController {
             }
         }
         self.numberUsersLabel.text = "\(users.count)"
+        going = sender.isOn
         group?[PF_GROUPS_USERS] = users
         group?.saveInBackground()
         
