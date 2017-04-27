@@ -27,14 +27,29 @@ class MyEventsViewController: UICollectionViewController {
         return UIStatusBarStyle.lightContent
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        var query = PFQuery(className: PF_USER_CLASS_NAME)
+        query.includeKey(PF_USER_EVENTS)
+        query.limit = limit
+        let userId = PFUser.current()?.objectId
+        query.whereKey("objectId", equalTo: userId)
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let user = objects!.first {
+                let eventsJson = user[PF_USER_EVENTS] as! [String]
+                var events: [Event] = []
+                for json in eventsJson {
+                    events.append(Event(json: json))
+                }
+                self.events = events
+                self.filtered = self.events
+                self.collectionView?.reloadData()
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*
-         if let patternImage = UIImage(named: "Pattern") {
-         view.backgroundColor = UIColor(patternImage: patternImage)
-         }
-         */
         // Set the PinterestLayout delegate
         if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
             layout.delegate = self
@@ -58,16 +73,6 @@ class MyEventsViewController: UICollectionViewController {
         navigationItem.titleView = searchBar
         //navigationController?.navigationBar.barTintColor = UIColor.red
         
-        var query = PFQuery(className: PF_USER_CLASS_NAME)
-        query.includeKey(PF_USER_EVENTS)
-        query.limit = limit
-        query.whereKey("objectId", equalTo: PFUser.current()?.objectId!)
-        query.findObjectsInBackground { (events: [PFObject]?, error: Error?) in
-            if let events = events as? [Event] {
-                self.events = events
-                self.filtered = self.events
-            }
-        }
 
     }
     
@@ -121,15 +126,26 @@ extension MyEventsViewController {
                 loadingMoreView?.frame = frame
                 loadingMoreView!.startAnimating()
                 
-                let start = self.collectionView?.numberOfItems(inSection: 0)
+                limit += 20
                 
-                Event.searchWith(q: "", sort: nil, start: start, point: lastLocation) { (events: [Event]?, error: Error?) in
+                var query = PFQuery(className: PF_USER_CLASS_NAME)
+                query.includeKey(PF_USER_EVENTS)
+                query.limit = limit
+                query.whereKey("objectId", equalTo: PFUser.current()?.objectId!)
+                query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
                     self.isMoreDataLoading = false
                     self.loadingMoreView!.stopAnimating()
-                    self.events! += events!
-                    self.filtered = self.events
-                    self.collectionView?.collectionViewLayout.invalidateLayout()
-                    self.collectionView?.reloadData()
+                    if let user = objects!.first {
+                        let eventsJson = user[PF_USER_EVENTS] as! [String]
+                        var events: [Event] = []
+                        for json in eventsJson {
+                            events.append(Event(json: json))
+                        }
+                        self.events = events
+                        self.filtered = self.events
+                        self.collectionView?.collectionViewLayout.invalidateLayout()
+                        self.collectionView?.reloadData()
+                    }
                 }
             }
         }
@@ -150,7 +166,8 @@ extension MyEventsViewController : PinterestLayoutDelegate {
     func collectionView(_ collectionView:UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath , withWidth width:CGFloat) -> CGFloat {
         let event = filtered[indexPath.item]
         let boundingRect =  CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
-        let rect  = AVMakeRect(aspectRatio: event.imageSize!, insideRect: boundingRect)
+        let imageSize = CGSize(width: CGFloat(event.imageWidth!), height: CGFloat(event.imageHeight!))
+        let rect  = AVMakeRect(aspectRatio: imageSize, insideRect: boundingRect)
         return rect.size.height
     }
     

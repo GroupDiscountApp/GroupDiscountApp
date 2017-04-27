@@ -25,6 +25,9 @@ PODS:
     - AFNetworking/NSURLConnection (~> 2.6.0)
     - AFNetworking/NSURLSession (~> 2.6.0)
   - Bolts/Tasks (1.8.4)
+  - EVReflection (4.1.0):
+    - EVReflection/Core (= 4.1.0)
+  - EVReflection/Core (4.1.0)
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
@@ -39,6 +42,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
   - Alamofire
   - BDBOAuth1Manager (~> 1.6.0)
+  - EVReflection
   - JSQMessagesViewController
   - Parse
   - ParseUI
@@ -49,12 +53,13 @@ SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  EVReflection: 22bb8525d0da6459fce6bb6e92010bf3cd81f093
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
   ProgressHUD: 4b66b0df0e08519c5c7283a198fd2867a114c95a
 
-PODFILE CHECKSUM: 1478d0493bb245389c7975ddce2c344a0d059c2f
+PODFILE CHECKSUM: 2e4aba54148025ac4ca04928d935ed1eab094a7b
 
 COCOAPODS: 1.2.0

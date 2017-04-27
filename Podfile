@@ -10,6 +10,7 @@ target 'GroupDiscountApp' do
   pod 'AFNetworking', ' ~> 2.6.3'
   pod 'Alamofire'
   pod 'BDBOAuth1Manager', '~> 1.6.0'
+  pod 'EVReflection'
   pod 'Parse'
   pod 'ParseUI'
   pod 'JSQMessagesViewController'

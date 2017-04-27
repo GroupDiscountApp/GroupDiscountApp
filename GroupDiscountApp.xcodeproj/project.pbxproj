@@ -32,7 +32,6 @@
 		8D5DBCC301EF22987CAC3B86 /* Pods_GroupDiscountApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34DA5BB287E6C5812F894F26 /* Pods_GroupDiscountApp.framework */; };
 		93ED11DC1E8094B000C5C81B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED11DB1E8094B000C5C81B /* LoginViewController.swift */; };
 		93ED11DE1E8097AD00C5C81B /* AllEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED11DD1E8097AD00C5C81B /* AllEventsViewController.swift */; };
-		93ED11E31E80984700C5C81B /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED11E21E80984700C5C81B /* EventsCell.swift */; };
 		93ED11E51E809C1700C5C81B /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED11E41E809C1700C5C81B /* EventViewController.swift */; };
 		93ED11E71E809E3F00C5C81B /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED11E61E809E3F00C5C81B /* GroupViewController.swift */; };
 /* End PBXBuildFile section */
@@ -67,7 +66,6 @@
 		3EEA949C1EAA524A00F071BD /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
 		93ED11DB1E8094B000C5C81B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		93ED11DD1E8097AD00C5C81B /* AllEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllEventsViewController.swift; sourceTree = "<group>"; };
-		93ED11E21E80984700C5C81B /* EventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
 		93ED11E41E809C1700C5C81B /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		93ED11E61E809E3F00C5C81B /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				3E3FA1351E942E3E000BC0F6 /* InfiniteScrollActivityView.swift */,
-				93ED11E21E80984700C5C81B /* EventsCell.swift */,
 				3EA718BC1EA8F89100275218 /* AnnotatedPhotoCell.swift */,
 				3EEA949C1EAA524A00F071BD /* RoundedCornersView.swift */,
 			);
@@ -323,7 +320,6 @@
 				3EE8991C1E96891000A5E4D2 /* StubhubClient.swift in Sources */,
 				3EDB5A401E928D71002D903B /* ChatViewController.swift in Sources */,
 				1EAACFA31E8A0BAF008E3C96 /* SignupViewController.swift in Sources */,
-				93ED11E31E80984700C5C81B /* EventsCell.swift in Sources */,
 				3EDB5A421E928D71002D903B /* GroupsViewController.swift in Sources */,
 				93ED11DE1E8097AD00C5C81B /* AllEventsViewController.swift in Sources */,
 				3EDB5A441E928D71002D903B /* Messages.swift in Sources */,

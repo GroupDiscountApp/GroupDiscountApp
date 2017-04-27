@@ -34,7 +34,7 @@ class GroupViewController: UITableViewController {
         
         eventNameLabel.text = event.name
         eventDescriptionLabel.text = event.comment
-        eventImageView.setImageWith(event.imageUrl!)
+        eventImageView.setImageWith(URL(string: event.imageUrlString!)!)
         
         var query = PFQuery(className: PF_GROUPS_CLASS_NAME)
         query.includeKey(PF_GROUPS_USERS)
@@ -109,8 +109,8 @@ class GroupViewController: UITableViewController {
             userList += "\(users.count). \(PFUser.current()![PF_USER_FULLNAME]!)\n"
             usersListLabel.text = userList
             var user = PFUser.current()!
-            var userEvents = user[PF_USER_EVENTS] as! [Event]
-            userEvents.append(event)
+            var userEvents = user[PF_USER_EVENTS] as? [String]
+            userEvents!.append(event.toJsonString())
             user[PF_USER_EVENTS] = userEvents
             user.saveInBackground()
             
@@ -128,10 +128,17 @@ class GroupViewController: UITableViewController {
                     }
                     self.usersListLabel.text = userList
                     var user = PFUser.current()!
-                    var userEvents = user[PF_USER_EVENTS] as! [Event]
-                    userEvents.remove(at: userEvents.index(of: event)!)
-                    user[PF_USER_EVENTS] = userEvents
-                    user.saveInBackground()
+                    var userEvents = user[PF_USER_EVENTS] as? [String]
+                    if userEvents!.count > 0 {
+                        let eventJson = event.toJsonString()
+                        if let index = userEvents!.index(of: eventJson) {
+                            userEvents!.remove(at: index)
+                            print(userEvents)
+                            print(index)
+                            user[PF_USER_EVENTS] = userEvents
+                            user.saveInBackground()
+                        }
+                    }
                 }
             }
         }

@@ -8,38 +8,40 @@
 
 import UIKit
 import CoreLocation
-import Parse
+import EVReflection
 
-class Event: PFObject {
+extension Event: EVReflectable { }
+
+class Event: NSObject {
     
     var name: String?
     var address: String?
     var lat: NSNumber?
     var lon: NSNumber?
-    var imageUrl: URL?
-    //var image: UIImage?
-    var imageSize: CGSize?
+    var imageUrlString: String?
+    var imageHeight: NSNumber?
+    var imageWidth: NSNumber?
     var eventDate: Date?
-    var ticketMinPrice: Float?
-    var ticketMaxPrice: Float?
-    var totalTickets: Int?
+    var ticketMinPrice: NSNumber?
+    var ticketMaxPrice: NSNumber?
+    var totalTickets: NSNumber?
     var currencyCode: String?
     var locale: String?
-    var id: Int?
+    var id: NSNumber?
     var comment: String
-    var eventUrl: URL?
+    var eventUrlString: String?
     
     init(dictionary: NSDictionary) {
-        super.init()
         //print(dictionary)
         
         name = dictionary["name"] as? String
-        id = dictionary["id"] as? Int
-        if let eventUrlString = dictionary["webURI"] as? String {
+        id = dictionary["id"] as? NSNumber
+        eventUrlString = dictionary["webURI"] as? String
+        /*if let eventUrlString = dictionary["webURI"] as? String {
             eventUrl = URL(string: "https://www.stubhub.com/\(eventUrlString)")
         } else {
             eventUrl = nil
-        }
+        }*/
         let location = dictionary["venue"] as? NSDictionary
         var addressString = ""
         if location != nil {
@@ -52,15 +54,14 @@ class Event: PFObject {
         
         let imagesArray = dictionary["images"] as? NSArray
         let imageDict = imagesArray?[0] as? NSDictionary
-        let imageUrlString = imageDict?["urlSsl"] as? String
-        if imageUrlString != nil {
+        imageUrlString = imageDict?["urlSsl"] as? String
+        /*if imageUrlString != nil {
             imageUrl = URL(string: imageUrlString!)!
         } else {
             imageUrl = nil
-        }
-        let width = imageDict?["width"] as? CGFloat
-        let height = imageDict?["height"] as? CGFloat
-        imageSize = (width != nil)&&(height != nil) ? CGSize(width: width!, height: height!) : nil
+        }*/
+        imageWidth = imageDict?["width"] as? NSNumber
+        imageHeight = imageDict?["height"] as? NSNumber
         /*
         var imageData: Data? = nil
         do {
@@ -78,9 +79,9 @@ class Event: PFObject {
         //print(formatter.string(from: eventDate!))
         
         let ticketInfo = dictionary["ticketInfo"] as? NSDictionary
-        ticketMinPrice = ticketInfo?["minPrice"] as? Float
-        ticketMaxPrice = ticketInfo?["maxPrice"] as? Float
-        totalTickets = ticketInfo?["totalTickets"] as? Int
+        ticketMinPrice = ticketInfo?["minPrice"] as? NSNumber
+        ticketMaxPrice = ticketInfo?["maxPrice"] as? NSNumber
+        totalTickets = ticketInfo?["totalTickets"] as? NSNumber
         currencyCode = ticketInfo?["currencyCode"] as? String
 
         let dformatter = DateFormatter()
@@ -93,6 +94,26 @@ class Event: PFObject {
         nFormatter.locale = Locale(identifier: locale!)
         let priceRange = nFormatter.string(from: ticketMinPrice! as NSNumber)!+"-"+nFormatter.string(from: ticketMaxPrice! as NSNumber)!
         comment = "\(address!)\n\(date)\n\(priceRange)"
+
+    }
+    
+    override init() {
+        self.name = nil
+        self.address = nil
+        self.lat = nil
+        self.lon = nil
+        self.imageUrlString = nil
+        self.imageWidth = nil
+        self.imageHeight = nil
+        self.eventDate = nil
+        self.ticketMinPrice = nil
+        self.ticketMaxPrice = nil
+        self.totalTickets = nil
+        self.currencyCode = nil
+        self.locale = nil
+        self.id = nil
+        self.comment = ""
+        self.eventUrlString = nil
     }
     
     class func events(array: [NSDictionary]) -> [Event] {
@@ -117,3 +138,4 @@ class Event: PFObject {
         _ = StubhubClient.sharedInstance.searchWith(q, sort: sort, start: start, point: point, completion: completion)
     }
 }
+

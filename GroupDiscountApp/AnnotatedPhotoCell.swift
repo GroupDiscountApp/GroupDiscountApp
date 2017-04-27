@@ -19,7 +19,7 @@ class AnnotatedPhotoCell: UICollectionViewCell {
         didSet {
             if let event = event {
                 //imageView.image = event.image!.decompressedImage
-                let request = URLRequest(url: event.imageUrl!)
+                let request = URLRequest(url: URL(string: event.imageUrlString!)!)
                 imageView.setImageWith(
                     request,
                     placeholderImage: nil,

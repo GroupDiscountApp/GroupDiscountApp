@@ -94,6 +94,6 @@ extension EventViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        UIApplication.shared.open(event.eventUrl!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(URL(string: event.eventUrlString!)!, options: [:], completionHandler: nil)
     }
 }

@@ -40,7 +40,7 @@ let PF_USER_FULLNAME_LOWER				= "fullname_lower"          //	String
 let PF_USER_FACEBOOKID					= "facebookId"              //	String
 let PF_USER_PICTURE						= "picture"                 //	File
 let PF_USER_THUMBNAIL					= "thumbnail"               //	File
-let PF_USER_EVENTS                      = "events"                  //  [Events]
+let PF_USER_EVENTS                      = "events"                  //  Array of Event object as json strings
 
 /* Chat */
 let PF_CHAT_CLASS_NAME					= "Chat"					//	Class name

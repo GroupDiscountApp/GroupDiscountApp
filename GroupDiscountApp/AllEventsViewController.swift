@@ -194,7 +194,8 @@ extension AllEventsViewController : PinterestLayoutDelegate {
     func collectionView(_ collectionView:UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath , withWidth width:CGFloat) -> CGFloat {
         let event = filtered[indexPath.item]
         let boundingRect =  CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
-        let rect  = AVMakeRect(aspectRatio: event.imageSize!, insideRect: boundingRect)
+        let imageSize = CGSize(width: CGFloat(event.imageWidth!), height: CGFloat(event.imageHeight!))
+        let rect  = AVMakeRect(aspectRatio: imageSize, insideRect: boundingRect)
         return rect.size.height
     }
     

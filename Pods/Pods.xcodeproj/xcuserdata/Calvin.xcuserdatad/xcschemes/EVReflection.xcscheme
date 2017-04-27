@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C4636AC5299D002ED3C1C52562F3787C'
-               BlueprintName = 'ProgressHUD'
+               BlueprintIdentifier = '9AAB2077BCA8E341C7F83370229F7335'
+               BlueprintName = 'EVReflection'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'ProgressHUD.framework'>
+               BuildableName = 'EVReflection.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

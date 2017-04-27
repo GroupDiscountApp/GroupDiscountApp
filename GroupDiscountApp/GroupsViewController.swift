@@ -70,8 +70,9 @@ class GroupsViewController: UITableViewController, UIAlertViewDelegate {
                     object[PF_GROUPS_EVENT_ID] = event.id
                     object[PF_GROUPS_USERS] = [PFUser.current()!]
                     var user = PFUser.current()!
-                    var userEvents = user[PF_USER_EVENTS] as! [Event]
-                    userEvents.append(event)
+                    var userEvents = user[PF_USER_EVENTS] as! [String]
+                    let eventJson = event.toJsonString()
+                    userEvents.append(eventJson)
                     user[PF_USER_EVENTS] = userEvents
                     user.saveInBackground()
                     object.saveInBackground(block: { (success: Bool, error: Error?) in
