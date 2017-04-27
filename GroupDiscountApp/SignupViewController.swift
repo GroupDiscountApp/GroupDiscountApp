@@ -92,6 +92,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         user[PF_USER_EMAILCOPY] = email
         user[PF_USER_FULLNAME] = name
         user[PF_USER_FULLNAME_LOWER] = name.lowercased()
+        user[PF_USER_EVENTS] = []
         user.signUpInBackground { (succeeded: Bool, error: Error?) -> Void in
             if error == nil {
                 PushNotication.parsePushUserAssign()

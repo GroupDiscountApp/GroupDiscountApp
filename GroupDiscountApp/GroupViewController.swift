@@ -108,19 +108,48 @@ class GroupViewController: UITableViewController {
             users.append(PFUser.current()!)
             userList += "\(users.count). \(PFUser.current()![PF_USER_FULLNAME]!)\n"
             usersListLabel.text = userList
+            var user = PFUser.current()!
+            var userEvents = user[PF_USER_EVENTS] as! [Event]
+            userEvents.append(event)
+            user[PF_USER_EVENTS] = userEvents
+            user.saveInBackground()
+            
         } else if !sender.isOn && going {
             let currentUser = PFUser.current()
             for user in users {
                 if user.objectId == currentUser?.objectId {
                     users.remove(at: users.index(of: user)!)
-                    usersListLabel.text = userList.components(separatedBy: "\n")[0...(users.count-1)].joined(separator: "\n")
+                    //usersListLabel.text = userList.components(separatedBy: "\n")[0...(users.count)].joined(separator: "\n")
+                    var num = 1
+                    var userList = ""
+                    for user in users {
+                        userList += "\(num). \(user[PF_USER_FULLNAME]!)\n"
+                        num += 1
+                    }
+                    self.usersListLabel.text = userList
+                    var user = PFUser.current()!
+                    var userEvents = user[PF_USER_EVENTS] as! [Event]
+                    userEvents.remove(at: userEvents.index(of: event)!)
+                    user[PF_USER_EVENTS] = userEvents
+                    user.saveInBackground()
                 }
             }
         }
-        self.numberUsersLabel.text = "\(users.count)"
-        going = sender.isOn
-        group?[PF_GROUPS_USERS] = users
-        group?.saveInBackground()
+        if users.count == 0 {
+            do {
+                try group?.delete()
+                if let navController = self.navigationController {
+                    navController.popViewController(animated: true)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        } else {
+            self.numberUsersLabel.text = "\(users.count)"
+            going = sender.isOn
+            group?[PF_GROUPS_USERS] = users
+            group?.saveInBackground()
+        }
         
     }
     

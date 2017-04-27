@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E78A2801EB164710051782F /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E78A27F1EB164710051782F /* MyEventsViewController.swift */; };
 		1E8C9C371E679C690022577F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8C9C361E679C690022577F /* AppDelegate.swift */; };
 		1E8C9C3C1E679C6A0022577F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8C9C3A1E679C6A0022577F /* Main.storyboard */; };
 		1E8C9C3E1E679C6A0022577F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8C9C3D1E679C6A0022577F /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		13BFEC6B1D0F69753FE062D2 /* Pods-GroupDiscountApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupDiscountApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupDiscountApp/Pods-GroupDiscountApp.release.xcconfig"; sourceTree = "<group>"; };
+		1E78A27F1EB164710051782F /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		1E8C9C331E679C680022577F /* GroupDiscountApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupDiscountApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8C9C361E679C690022577F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8C9C3B1E679C6A0022577F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				93ED11DD1E8097AD00C5C81B /* AllEventsViewController.swift */,
 				93ED11E41E809C1700C5C81B /* EventViewController.swift */,
+				1E78A27F1EB164710051782F /* MyEventsViewController.swift */,
 				3EDB5A3A1E928D71002D903B /* GroupsViewController.swift */,
 				93ED11E61E809E3F00C5C81B /* GroupViewController.swift */,
 				3EDB5A381E928D71002D903B /* ChatViewController.swift */,
@@ -315,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EA718B61EA8F1FD00275218 /* PinterestLayout.swift in Sources */,
+				1E78A2801EB164710051782F /* MyEventsViewController.swift in Sources */,
 				93ED11E71E809E3F00C5C81B /* GroupViewController.swift in Sources */,
 				3EE8991C1E96891000A5E4D2 /* StubhubClient.swift in Sources */,
 				3EDB5A401E928D71002D903B /* ChatViewController.swift in Sources */,

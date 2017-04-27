@@ -8,27 +8,29 @@
 
 import UIKit
 import CoreLocation
+import Parse
 
-class Event: NSObject {
+class Event: PFObject {
     
-    let name: String?
-    let address: String?
-    let lat: NSNumber?
-    let lon: NSNumber?
-    let imageUrl: URL?
-    //let image: UIImage?
-    let imageSize: CGSize?
-    let eventDate: Date?
-    let ticketMinPrice: Float?
-    let ticketMaxPrice: Float?
-    let totalTickets: Int?
-    let currencyCode: String?
-    let locale: String?
-    let id: Int?
-    let comment: String
-    let eventUrl: URL?
+    var name: String?
+    var address: String?
+    var lat: NSNumber?
+    var lon: NSNumber?
+    var imageUrl: URL?
+    //var image: UIImage?
+    var imageSize: CGSize?
+    var eventDate: Date?
+    var ticketMinPrice: Float?
+    var ticketMaxPrice: Float?
+    var totalTickets: Int?
+    var currencyCode: String?
+    var locale: String?
+    var id: Int?
+    var comment: String
+    var eventUrl: URL?
     
     init(dictionary: NSDictionary) {
+        super.init()
         //print(dictionary)
         
         name = dictionary["name"] as? String
