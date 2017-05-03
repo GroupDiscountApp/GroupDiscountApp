@@ -36,12 +36,8 @@ class Event: NSObject {
         
         name = dictionary["name"] as? String
         id = dictionary["id"] as? NSNumber
-        eventUrlString = dictionary["webURI"] as? String
-        /*if let eventUrlString = dictionary["webURI"] as? String {
-            eventUrl = URL(string: "https://www.stubhub.com/\(eventUrlString)")
-        } else {
-            eventUrl = nil
-        }*/
+        let urlString = dictionary["webURI"] as? String
+        eventUrlString = "https://www.stubhub.com/\(urlString!)"
         let location = dictionary["venue"] as? NSDictionary
         var addressString = ""
         if location != nil {
@@ -55,22 +51,8 @@ class Event: NSObject {
         let imagesArray = dictionary["images"] as? NSArray
         let imageDict = imagesArray?[0] as? NSDictionary
         imageUrlString = imageDict?["urlSsl"] as? String
-        /*if imageUrlString != nil {
-            imageUrl = URL(string: imageUrlString!)!
-        } else {
-            imageUrl = nil
-        }*/
         imageWidth = imageDict?["width"] as? NSNumber
         imageHeight = imageDict?["height"] as? NSNumber
-        /*
-        var imageData: Data? = nil
-        do {
-            imageData = try Data(contentsOf: imageUrl!)
-        } catch {
-            print(error.localizedDescription)
-        }
-        image = UIImage(data: imageData!)
-        */
         let formatter = DateFormatter()
         locale = dictionary["defaultLocale"] as? String
         formatter.locale = Locale(identifier: locale!)

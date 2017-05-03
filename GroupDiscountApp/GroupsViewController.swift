@@ -27,7 +27,7 @@ class GroupsViewController: UITableViewController, UIAlertViewDelegate {
         super.viewDidAppear(animated)
         
         if PFUser.current() != nil {
-            self.loadGroups()
+            loadGroups()
         }
         else {
             Utilities.loginUser(target: self)

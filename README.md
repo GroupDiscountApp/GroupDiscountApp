@@ -1,26 +1,24 @@
 # Group Discount App
 
-GroupDiscount app is an iOS app to find people willing to avail group discount rates on various events.
-
-Time spent: **** hours spent in total
+GroupDiscount app is an iOS app to find people willing to avail group discount rates on various events [Stubhub API](https://developer.stubhub.com/store/site/pages/doc-viewer.jag?category=Search&api=EventSearchAPI&endpoint=searchforeventsv3&version=v3).
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-- [] User can create an account
-- [] After user login, user sees a list of broadway shows available for group discounts
-- [] User can search for a broadway show 
-- [] Users can view details of the show
-- [] User can find and make groups for going to a show and thereby can avail the group discount
-- [] User can group chat with group memebers of the show
+- [x] User can create an account
+- [x] After user login, user sees a list of event shows available for group discounts
+- [x] User can search for a event
+- [x] Users can view details of the details
+- [x] User can find and make groups for going to a details and thereby can avail the group discount
+- [x] User can group chat with group memebers of the details
 
 
 The following **optional** functionality is completed:
 
 - [] User can send request to a friend and thereby maitain a friend list
 - [] User can import contact from Facebook
-- [] User can view the map for event venue
+- [x] User can view the map for event venue
 
 ## Tables
 
@@ -38,7 +36,7 @@ The following **optional** functionality is completed:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/ELmDviI.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

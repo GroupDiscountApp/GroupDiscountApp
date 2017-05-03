@@ -8,15 +8,17 @@
 
 import UIKit
 import Parse
+import ProgressHUD
 
-class GroupViewController: UITableViewController {
+class GroupViewController: UIViewController {
 
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventDescriptionLabel: UILabel!
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var goingSwitch: UISwitch!
     @IBOutlet weak var numberUsersLabel: UILabel!
-    @IBOutlet weak var usersListLabel: UILabel!
+    //@IBOutlet weak var usersListLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     var group: PFObject?
     var groupId: String!
@@ -29,85 +31,57 @@ class GroupViewController: UITableViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        tableView.refreshControl!.addTarget(self, action: #selector(GroupViewController.loadGroup), for: .valueChanged)
         
         eventNameLabel.text = event.name
         eventDescriptionLabel.text = event.comment
         eventImageView.setImageWith(URL(string: event.imageUrlString!)!)
         
+        loadGroup()
+    }
+    
+    func loadGroup() {
         var query = PFQuery(className: PF_GROUPS_CLASS_NAME)
         query.includeKey(PF_GROUPS_USERS)
         query.whereKey("objectId", equalTo: groupId)
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-            if let group = objects!.first {
-                self.group = group
-                let users = group[PF_GROUPS_USERS] as! [PFUser]
-                let currentUser = PFUser.current()
-                for user in users {
-                    if user.objectId == currentUser?.objectId {
-                        self.going = true
+            if error == nil {
+                if let group = objects!.first {
+                    self.group = group
+                    let users = group[PF_GROUPS_USERS] as! [PFUser]
+                    self.users = users
+                    let currentUser = PFUser.current()
+                    for user in users {
+                        if user.objectId == currentUser?.objectId {
+                            self.going = true
+                        }
                     }
+                    self.goingSwitch.setOn(self.going, animated: true)
+                    self.tableView.reloadData()
+                    self.numberUsersLabel.text = "Number going: \(users.count)"
                 }
-                self.goingSwitch.setOn(self.going, animated: true)
-                //self.tableView.reloadData()
-                self.numberUsersLabel.text = "\(users.count)"
-                var num = 1
-                var userList = ""
-                for user in users {
-                     userList += "\(num). \(user[PF_USER_FULLNAME]!)\n"
-                    num += 1
-                }
-                self.usersListLabel.text = userList
+            }  else {
+                ProgressHUD.showError("Network error")
+                print(error! as NSError)
             }
+            self.tableView.refreshControl!.endRefreshing()
         }
-    }
-/*
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        switch section {
-        case 0, 1:
-            return 1
-        case 2:
-            var count: Int = 1
-            if let users = users {
-                count += users.count
-            }
-            return count
-        default:
-            return 0
-        }
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
-        let section = indexPath.section
-        switch section {
-        case 0, 1:
-            break
-        case 2:
-            let userName = users?[indexPath.row]
-            cell.detailTextLabel?.text = "\(userName)"
-        default:
-            break
-        }
-        return cell
 
     }
-*/
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension;
-    }
-    
     
     @IBAction func goingSwitchToggled(_ sender: UISwitch) {
-        var users = group?[PF_GROUPS_USERS] as! [PFUser]
-        var userList = usersListLabel.text!
+        users = group?[PF_GROUPS_USERS] as! [PFUser]
+        
         if sender.isOn && !going {
-            users.append(PFUser.current()!)
-            userList += "\(users.count). \(PFUser.current()![PF_USER_FULLNAME]!)\n"
-            usersListLabel.text = userList
+            users?.append(PFUser.current()!)
             var user = PFUser.current()!
             var userEvents = user[PF_USER_EVENTS] as? [String]
             userEvents!.append(event.toJsonString())
@@ -116,25 +90,15 @@ class GroupViewController: UITableViewController {
             
         } else if !sender.isOn && going {
             let currentUser = PFUser.current()
-            for user in users {
+            for user in users! {
                 if user.objectId == currentUser?.objectId {
-                    users.remove(at: users.index(of: user)!)
-                    //usersListLabel.text = userList.components(separatedBy: "\n")[0...(users.count)].joined(separator: "\n")
-                    var num = 1
-                    var userList = ""
-                    for user in users {
-                        userList += "\(num). \(user[PF_USER_FULLNAME]!)\n"
-                        num += 1
-                    }
-                    self.usersListLabel.text = userList
+                    users?.remove(at: (users?.index(of: user)!)!)
                     var user = PFUser.current()!
                     var userEvents = user[PF_USER_EVENTS] as? [String]
                     if userEvents!.count > 0 {
                         let eventJson = event.toJsonString()
                         if let index = userEvents!.index(of: eventJson) {
                             userEvents!.remove(at: index)
-                            print(userEvents)
-                            print(index)
                             user[PF_USER_EVENTS] = userEvents
                             user.saveInBackground()
                         }
@@ -142,7 +106,8 @@ class GroupViewController: UITableViewController {
                 }
             }
         }
-        if users.count == 0 {
+        
+        if users?.count == 0 {
             do {
                 try group?.delete()
                 if let navController = self.navigationController {
@@ -152,14 +117,14 @@ class GroupViewController: UITableViewController {
                 print(error.localizedDescription)
             }
         } else {
-            self.numberUsersLabel.text = "\(users.count)"
+            self.numberUsersLabel.text = "Number going: \((users?.count)!)"
             going = sender.isOn
             group?[PF_GROUPS_USERS] = users
             group?.saveInBackground()
         }
+        tableView.reloadData()
         
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -181,4 +146,25 @@ class GroupViewController: UITableViewController {
     }
  
 
+}
+
+extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if users != nil {
+            return users!.count
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        
+        let user = users?[indexPath.row]
+        cell.textLabel?.text = user?[PF_USER_FULLNAME] as? String
+        cell.textLabel?.textColor = UIColor.white
+        
+        return cell
+    }
+    
 }

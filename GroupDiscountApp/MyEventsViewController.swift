@@ -28,7 +28,7 @@ class MyEventsViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         var query = PFQuery(className: PF_USER_CLASS_NAME)
         query.includeKey(PF_USER_EVENTS)
         query.limit = limit

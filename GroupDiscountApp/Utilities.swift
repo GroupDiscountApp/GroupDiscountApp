@@ -44,4 +44,15 @@ class Utilities {
         }
         return elapsed
     }
+    
+    class func customBorder(textfield: UITextField) {
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = UIColor.darkGray.cgColor
+        border.frame = CGRect(x: 0, y: textfield.frame.size.height - width, width:  textfield.frame.size.width, height: textfield.frame.size.height)
+        
+        border.borderWidth = width
+        textfield.layer.addSublayer(border)
+        textfield.layer.masksToBounds = true
+    }
 }

@@ -20,6 +20,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //Utilities.customBorder(textfield: userEmailAddressField)
+        //Utilities.customBorder(textfield: userPasswordField)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,10 +38,10 @@ class LoginViewController: UIViewController {
         PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
             
             if user != nil {
-                print("You're logged in!")
+                //print("You're logged in!")
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             } else {
-                print("User login failed.")
+                //print("User login failed.")
                 print(error! as NSError)
                 let defaultAction = UIAlertAction(title: "Try again", style: .default, handler: nil)
                 alert.addAction(defaultAction)
