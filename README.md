@@ -1,17 +1,17 @@
 # Group Discount App
 
-GroupDiscount app is an iOS app to find people willing to avail group discount rates on various events [Stubhub API](https://developer.stubhub.com/store/site/pages/doc-viewer.jag?category=Search&api=EventSearchAPI&endpoint=searchforeventsv3&version=v3).
+GroupDiscount app is an iOS app to form groups for various events using the [Stubhub API](https://developer.stubhub.com/store/site/pages/doc-viewer.jag?category=Search&api=EventSearchAPI&endpoint=searchforeventsv3&version=v3).
 
 ## User Stories
 
 The following **required** functionality is completed:
 
 - [x] User can create an account
-- [x] After user login, user sees a list of event shows available for group discounts
+- [x] After user login, user sees a list of events
 - [x] User can search for a event
 - [x] Users can view details of the details
-- [x] User can find and make groups for going to a details and thereby can avail the group discount
-- [x] User can group chat with group memebers of the details
+- [x] User can find and make groups for going to a details
+- [x] User can group chat with group memebers
 
 
 The following **optional** functionality is completed:
